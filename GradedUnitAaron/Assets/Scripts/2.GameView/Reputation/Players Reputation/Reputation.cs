@@ -27,4 +27,8 @@ public class Reputation : MonoBehaviour
         tireFour = false; 
         tireFive = false;
     }
+    private void Update()
+    {
+        //Debug.Log("Reputation = " + reputation);
+    }
 }
