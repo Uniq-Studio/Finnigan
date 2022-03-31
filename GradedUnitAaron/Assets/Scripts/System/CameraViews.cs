@@ -8,7 +8,7 @@ public class CameraViews : MonoBehaviour
 
     public GameObject fox;
     private bool changeView;
-    private int view;
+    public int view;
 
     // Start is called before the first frame update
     void Start()

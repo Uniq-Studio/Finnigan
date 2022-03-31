@@ -2357,10 +2357,10 @@ GameObject:
   - component: {fileID: 1141588466}
   - component: {fileID: 1141588465}
   - component: {fileID: 1141588468}
-  - component: {fileID: 1141588469}
   - component: {fileID: 1141588470}
   - component: {fileID: 1141588472}
   - component: {fileID: 1141588471}
+  - component: {fileID: 1141588469}
   m_Layer: 0
   m_Name: '[TEMP] Player'
   m_TagString: Player
@@ -2433,17 +2433,29 @@ MonoBehaviour:
   walkSpeed: 12
   runSpeed: 24
   jumpSpeed: 0
-  jumpHight: 0
-  stanimaMax: 0
-  refillStanimaSpeed: 0
-  startHealth: 100
+  jumpHeight: 0
+  staminaMax: 0
+  refillStaminaSpeed: 0
+  healthCurrent: 100
+  healthMax: 100
   refillHealth: 5
   attackDamage: 0
   attackDamageSpeed: 0
   defence: 0
   defenceMax: 0
-  reputationWorthMax: 0
-  reputationWorthMin: 0
+  m_WalkSpeed: 0
+  m_RunSpeed: 0
+  m_JumpSpeed: 0
+  m_JumpHeight: 0
+  m_StaminaMax: 0
+  m_RefillStaminaSpeed: 0
+  m_HealthCurrent: 0
+  m_HealthMax: 0
+  m_RefillHealth: 0
+  m_AttackDamage: 0
+  m_AttackDamageSpeed: 0
+  m_Defence: 0
+  m_DefenceMax: 0
 --- !u!65 &1141588470
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3832,7 +3844,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1496850453}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Characters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4664,6 +4676,7 @@ GameObject:
   - component: {fileID: 1735069405}
   - component: {fileID: 1735069406}
   - component: {fileID: 1735069407}
+  - component: {fileID: 1735069408}
   m_Layer: 0
   m_Name: Unity Pre-Load
   m_TagString: Untagged
@@ -4722,6 +4735,18 @@ MonoBehaviour:
   tireThree: 0
   tireFour: 0
   tireFive: 0
+--- !u!114 &1735069408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735069404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2497f79153c7d7847a52c5726b3be074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1760444722
 GameObject:
   m_ObjectHideFlags: 0
@@ -5278,6 +5303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Camera: {fileID: 1823688467}
   fox: {fileID: 2018127492}
+  view: 0
 --- !u!1 &1942061589
 GameObject:
   m_ObjectHideFlags: 0
@@ -5294,7 +5320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1942061590
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5360,7 +5386,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1141588469}
+        m_TargetAssemblyTypeName: PlayerBase, Assembly-CSharp
+        m_MethodName: SavePlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2013410473
 GameObject:
   m_ObjectHideFlags: 1

@@ -9,16 +9,17 @@ public class CharacterBase : MonoBehaviour
     public float walkSpeed = 12;
     public float runSpeed = 24;
     public float jumpSpeed;
-    public float jumpHight;
+    public float jumpHeight;
     #endregion
 
     #region Stanima for running
-    public float stanimaMax;
-    public float refillStanimaSpeed;
+    public float staminaMax;
+    public float refillStaminaSpeed;
     #endregion
 
     #region Health
-    public float startHealth = 100;
+    public float healthCurrent = 100;
+    public float healthMax = 100;
     public float refillHealth = 5;
     #endregion
 
@@ -32,9 +33,18 @@ public class CharacterBase : MonoBehaviour
     public float defenceMax;
     #endregion
 
-    #region Reputation Worth
-    public float reputationWorthMax;
-    public float reputationWorthMin;
-    #endregion
+    public void TakeDamage(float damage)
+    {
+        healthCurrent -= (damage - defence);
+    }
 
+    public void AttackDamage(float otherHealth)
+    {
+        otherHealth -= attackDamage;
+    }
+
+    public void RegenerateHealth()
+    {
+        healthCurrent += refillHealth * Time.fixedDeltaTime;
+    }
 }

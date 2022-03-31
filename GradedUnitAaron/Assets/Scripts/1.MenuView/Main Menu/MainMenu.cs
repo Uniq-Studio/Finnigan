@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,7 +27,7 @@ public class MainMenu : MonoBehaviour
     public int help = 0;
 
     //This is for Keyboard Inputs
-    //Type: DISABLE     to disbale them
+    //Type: DISABLE to disable them
     public string gameKey = "return";
     public string settingsKey = "s";
     public string helpKey = "DISABLE";
@@ -37,6 +38,10 @@ public class MainMenu : MonoBehaviour
 
     //Linking the Settings Panel
     public GameObject m_Panel;
+    public GameObject m_NewGame;
+    public GameObject m_ResumeGame;
+
+    public static bool loadSave;
 
     #endregion
 
@@ -54,10 +59,7 @@ public class MainMenu : MonoBehaviour
                 //Check If the Programmer is debugging
                 if (debugMode != true)
                 {
-                    /* If player presses "gameKey" 
-                     * it will launch the Game scene
-                     */
-                    LaunchGame();
+                   FileCheck();
                 }
                 else
                 {
@@ -131,10 +133,30 @@ public class MainMenu : MonoBehaviour
 
     #region Methods
 
+    #region File check
+    public void FileCheck()
+    {
+        if (File.Exists(Application.persistentDataPath + "/player.finnigan"))
+        {
+            m_ResumeGame.gameObject.SetActive(true);
+        }
+        else
+        {
+            m_NewGame.gameObject.SetActive(true);
+        }
+    }
+    #endregion
+
     #region Game
-    public void LaunchGame()
+    public void LaunchNewGame()
     {
         //Loads Game Scene
+        SceneManager.LoadScene(game);
+    }
+    public void ResumeGame()
+    {
+        //Loads Game Scene
+        loadSave = true;
         SceneManager.LoadScene(game);
     }
     #endregion

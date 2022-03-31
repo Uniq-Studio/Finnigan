@@ -372,11 +372,15 @@
 "Assets/Scripts/2.GameView/Charaters/Player/FPS.cs"
 "Assets/Scripts/2.GameView/Reputation/Players Reputation/Reputation.cs"
 "Assets/Scripts/2.GameView/Reputation/Snail/Snail.cs"
-"Assets/Scripts/2.GameView/System/CameraViews.cs"
-"Assets/Scripts/2.GameView/System/SoundEffects.cs"
 "Assets/Scripts/2.GameView/Terrain/ChunkLoader.cs"
 "Assets/Scripts/2.GameView/Terrain/ObjectHider.cs"
 "Assets/Scripts/2.GameView/Terrain/SplitTerrain.cs"
+"Assets/Scripts/System/CameraViews.cs"
+"Assets/Scripts/System/SaveSystem/Charaters/PlayerData.cs"
+"Assets/Scripts/System/SaveSystem/LoadSaveOnLaunch.cs"
+"Assets/Scripts/System/SaveSystem/SaveSystem.cs"
+"Assets/Scripts/System/SoundEffects.cs"
+"Assets/Scripts/System/TriggerSystem.cs"
 -langversion:9.0
 
 /deterministic
