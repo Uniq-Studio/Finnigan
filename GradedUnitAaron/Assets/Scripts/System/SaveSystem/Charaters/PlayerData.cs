@@ -41,6 +41,7 @@ public class PlayerData
 
     public PlayerData(PlayerBase player)
     {
+        m_position = new float[3];
         m_position[0] = player.transform.position.x;
         m_position[1] = player.transform.position.y;
         m_position[2] = player.transform.position.z;

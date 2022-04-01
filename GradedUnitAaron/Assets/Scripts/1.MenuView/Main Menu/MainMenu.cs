@@ -40,8 +40,10 @@ public class MainMenu : MonoBehaviour
     public GameObject m_Panel;
     public GameObject m_NewGame;
     public GameObject m_ResumeGame;
+    public GameObject m_GameOver;
 
     public static bool loadSave;
+    public static bool gameOver;
 
     #endregion
 
@@ -147,6 +149,19 @@ public class MainMenu : MonoBehaviour
     }
     #endregion
 
+    #region Close Window
+
+    public void CloseWindow()
+    {
+        //When the X is clicked it will close all windows, no matter what window is active
+        //This will make sure that there arent any over lapping windows.
+        m_ResumeGame.gameObject.SetActive(false);
+        m_NewGame.gameObject.SetActive(false);
+        m_Panel.gameObject.SetActive(false);
+        m_GameOver.gameObject.SetActive(false);
+    }
+    #endregion
+
     #region Game
     public void LaunchNewGame()
     {
@@ -169,11 +184,6 @@ public class MainMenu : MonoBehaviour
         m_Panel.gameObject.SetActive(true);
     }
 
-    public void CloseSettingPane()
-    {
-        //Hide the Setting panel when the cross is clicked
-        m_Panel.gameObject.SetActive(false);
-    }
     #endregion
 
     #region Help
@@ -181,6 +191,22 @@ public class MainMenu : MonoBehaviour
     {
         //Loads Help Scene
         SceneManager.LoadScene(help);
+    }
+    #endregion
+
+    #region Game Over Screen
+
+    void Start()
+    {
+        if (gameOver)
+        {
+            GameOverWindow();
+            gameOver = false;
+        }
+    }
+    public void GameOverWindow()
+    {
+        m_GameOver.gameObject.SetActive(true);
     }
     #endregion
 
