@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Wolf : CharacterBase
+public class Enemy : CharacterBase
 {
     public static bool HasStick = false;
     
