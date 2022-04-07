@@ -383,6 +383,7 @@
 "Assets/Scripts/System/SaveSystem/SaveSystem.cs"
 "Assets/Scripts/System/SoundEffects.cs"
 "Assets/Scripts/System/TriggerSystem.cs"
+"Assets/Scripts/System/UI/UIUpdater.cs"
 -langversion:9.0
 
 /deterministic

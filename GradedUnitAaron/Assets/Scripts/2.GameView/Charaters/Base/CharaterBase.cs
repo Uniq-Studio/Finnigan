@@ -13,14 +13,17 @@ public class CharacterBase : MonoBehaviour
     #endregion
 
     #region Stanima for running
+    public float stamina;
     public float staminaMax;
+    public float refillStamina;
     public float refillStaminaSpeed;
     #endregion
 
     #region Health
-    public float healthCurrent = 100;
+    public float health = 100;
     public float healthMax = 100;
     public float refillHealth = 5;
+    public int refillHealthSpeed = 5;
     #endregion
 
     #region Attack
@@ -35,7 +38,7 @@ public class CharacterBase : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        healthCurrent -= (damage - defence);
+        health -= (damage - defence);
     }
 
     public void AttackDamage(float otherHealth)
@@ -43,8 +46,36 @@ public class CharacterBase : MonoBehaviour
         otherHealth -= attackDamage;
     }
 
-    public void RegenerateHealth()
+    public IEnumerator Regenerate()
     {
-        healthCurrent += refillHealth * Time.fixedDeltaTime;
+        if (health < healthMax)
+        {
+            //Add health, with x amount of health
+            //More can be earnt
+            health += refillHealth;
+
+            //Player cant go over max health
+            if (health > healthMax)
+            {
+                health = healthMax;
+            }
+            //Waiting to do it again
+            yield return new WaitForSeconds(refillHealthSpeed);
+        }
+
+        if (stamina < staminaMax)
+        {
+            //Add health, with x amount of stamina
+            //More can be earnt
+            stamina += refillStamina;
+
+            //Player cant go over max stamina
+            if (stamina > staminaMax)
+            {
+                stamina = staminaMax;
+            }
+            //Waiting to do it again
+            yield return new WaitForSeconds(refillStaminaSpeed);
+        }
     }
 }

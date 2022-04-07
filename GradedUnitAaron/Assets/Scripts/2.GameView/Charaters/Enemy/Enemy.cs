@@ -10,7 +10,7 @@ public class Enemy : CharacterBase
     // Start is called before the first frame update
     void Start()
     {
-        healthCurrent = 100;
+        
     }
 
     // Update is called once per frame
@@ -19,6 +19,9 @@ public class Enemy : CharacterBase
 
     }
 
+
+    //Ends Game when has Item
+    //For now it goes to the Main Menu
     void OnTriggerEnter(Collider collider)
     {
         if (HasStick && collider.CompareTag("Player"))
@@ -27,10 +30,5 @@ public class Enemy : CharacterBase
             MainMenu.gameOver = true;
             SceneManager.LoadScene(0);
         }
-    }
-
-    public void GotStick()
-    {
-        HasStick = true;
     }
 }

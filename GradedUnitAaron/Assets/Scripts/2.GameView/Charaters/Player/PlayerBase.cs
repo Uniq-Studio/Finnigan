@@ -32,7 +32,7 @@ public class PlayerBase : CharacterBase
         m_JumpHeight = jumpHeight;
         m_StaminaMax = staminaMax;
         m_RefillStaminaSpeed = refillStaminaSpeed;
-        m_HealthCurrent = healthCurrent;
+        m_HealthCurrent = health;
         m_HealthMax = healthMax;
         m_RefillHealth = refillHealth;
         m_AttackDamage = attackDamage;
