@@ -2,26 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CornEncrustedStick : TriggerSystem
+public class CornEncrustedStick : MonoBehaviour
 {
     public GameObject self;
 
     UIUpdater UI;
+    private TriggerSystem m_TriggerSystem;
 
     private void Start()
     {
         UI = FindObjectOfType<UIUpdater>();
-    }
-
-    
-
-    void Update()
-    {
-        Interact(CollectItem);
+        m_TriggerSystem = new TriggerSystem();
     }
 
     /* Update the enemy to see that the player has the item
-     * Gives the quest to return it and distroys itself */
+     * Gives the quest to return it and destroyed itself */
     void CollectItem()
     {
         Enemy.HasStick = true;
@@ -29,18 +24,8 @@ public class CornEncrustedStick : TriggerSystem
         Destroy(self);
     }
 
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerStay(Collider collider)
     {
-        if (collider.CompareTag("Player"))
-        {
-            isClose = true;
-        }
-    }
-    void OnTriggerExit(Collider collider)
-    {
-        if (collider.CompareTag("Player"))
-        {
-            isClose = false;
-        }
+        m_TriggerSystem.Interact(CollectItem, collider);
     }
 }

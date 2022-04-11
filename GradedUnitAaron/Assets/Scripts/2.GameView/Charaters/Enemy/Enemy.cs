@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Enemy : CharacterBase
+public class Enemy : MonoBehaviour
 {
     public static bool HasStick = false;
+    private CharacterBase m_CharacterBase;
+    private TriggerSystem m_TriggerSystem;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_TriggerSystem = new TriggerSystem();
+        m_CharacterBase = new CharacterBase();
     }
 
     // Update is called once per frame
@@ -18,17 +21,22 @@ public class Enemy : CharacterBase
     {
 
     }
-
+    void OnTriggerStay(Collider collider)
+    {
+        m_TriggerSystem.Interact(EndGame, collider);
+    }
 
     //Ends Game when has Item
     //For now it goes to the Main Menu
-    void OnTriggerEnter(Collider collider)
+    void EndGame()
     {
-        if (HasStick && collider.CompareTag("Player"))
+        if (HasStick)
         {
             Debug.Log("Game Over");
             MainMenu.gameOver = true;
             SceneManager.LoadScene(0);
         }
     }
+
+
 }

@@ -10,6 +10,7 @@ public class Snail : MonoBehaviour
 
     Reputation m_Reputation;
     SoundEffects m_SoundEffects;
+    private TriggerSystem m_triggerSystem;
 
     private bool m_CloseToHelp = false;
 
@@ -18,35 +19,29 @@ public class Snail : MonoBehaviour
     {
         m_Reputation = FindObjectOfType<Reputation>();
         m_SoundEffects = FindObjectOfType<SoundEffects>();
+        m_triggerSystem = new TriggerSystem();
     }
 
     void Update()
     {
-        //Check If close and player Pressed E
-        if (m_CloseToHelp && Input.GetKeyDown(KeyCode.E))
-        {
-            StartCoroutine(Help());
-        }
+    }
+
+    void Help()
+    {
+        StartCoroutine(HelpExecute());
     }
 
     #region Check if player Is close
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerStay(Collider collider)
     {
-        if (collider.CompareTag("Player"))
-        {
-            m_CloseToHelp = true;
-        }
+        m_triggerSystem.Interact(Help, collider);
     }
-    void OnTriggerExit(Collider collider)
-    {
-        if (collider.CompareTag("Player"))
-        {
-            m_CloseToHelp = false;
-        }
-    }
+
     #endregion
 
-    IEnumerator Help()
+    
+
+    IEnumerator HelpExecute()
     {
         //Flip him over
         transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
