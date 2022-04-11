@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Berries : TriggerSystem
+public class Berries : MonoBehaviour
 {
     UIUpdater UI;
+    Inventory inventory;
+    TriggerSystem triggerSystem;
 
     public GameObject berries;
     public static int berryAmount;
@@ -15,12 +17,15 @@ public class Berries : TriggerSystem
     {
         //Call this to get access to the methods
         UI = FindObjectOfType<UIUpdater>();
+        inventory = FindObjectOfType<Inventory>();
+        triggerSystem = FindObjectOfType<TriggerSystem>();
+        triggerSystem = new TriggerSystem();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Interact(GetBerries);
+        triggerSystem.Interact(GetBerries);
     }
 
     void OnTriggerEnter(Collider collider)
@@ -28,7 +33,7 @@ public class Berries : TriggerSystem
         if (collider.CompareTag("Player"))
         {
             //isClose is from TriggerSystem
-            isClose = true;
+            triggerSystem.isClose = true;
         }
         
     }
@@ -36,7 +41,7 @@ public class Berries : TriggerSystem
     {
         if (collider.CompareTag("Player"))
         {
-            isClose = false;
+            triggerSystem.isClose = false;
         }
     }
      /*Gives the player a random amount of berries
@@ -46,6 +51,7 @@ public class Berries : TriggerSystem
     void GetBerries()
     {
         berryAmount = Mathf.FloorToInt(Random.Range(3, 8));
+        inventory.GiveItem(0);
         UI.UpdateBerries(berryAmount);
         berries.gameObject.SetActive(false);
         StartCoroutine(RespawnBerries());
