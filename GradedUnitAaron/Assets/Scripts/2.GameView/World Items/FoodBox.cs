@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class FoodBox : MonoBehaviour
 {
@@ -40,8 +41,8 @@ public class FoodBox : MonoBehaviour
     IEnumerator SpawnStealer()
     {
         yield return new WaitForSeconds(5);
-        Vector3 foodStealerLocation = transform.position + new Vector3(0, +2, -5);
-        Instantiate(stealerPrefab, foodStealerLocation, transform.rotation);
+        Vector3 foodStealerLocation = transform.position + new Vector3(-2, +1, 0);
+        Instantiate(stealerPrefab, foodStealerLocation, Quaternion.Euler(0,90,0));
         attackAttempts++;
     }
 
@@ -55,3 +56,4 @@ public class FoodBox : MonoBehaviour
 
     }
 }
+//https://answers.unity.com/questions/399924/using-a-custom-rotation-in-instantiate.html
