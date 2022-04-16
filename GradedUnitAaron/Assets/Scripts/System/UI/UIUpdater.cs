@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIUpdater : MonoBehaviour
 {
     public Text berries;
+    public Text berriesInBox;
     public Text task;
 
     public GameObject banner;
@@ -23,12 +24,16 @@ public class UIUpdater : MonoBehaviour
     }
 
     /* Call in berries when player gets them
-     * this will helpn save on resourses rather
+     * this will help save on resources rather
      * than calling it every frame making the 
      * game a bit more efficient */
     public void UpdateBerries(int amount)
     {
         berries.text = "Berries: " + amount;
+    }
+    public void UpdateBerriesBox(int amount)
+    {
+        berriesInBox.text = "In Box: " + amount;
     }
 
     /* This method get called when a new task is given */

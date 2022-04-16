@@ -1,26 +1,28 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Trader : MonoBehaviour
 {
     public GameObject ces;
     private TriggerSystem triggerSystem;
-    UIUpdater UI;
+    private UIUpdater UI;
 
-    void Start()
+    private bool doOnce = true;
+
+    private void Start()
     {
         UI = FindObjectOfType<UIUpdater>();
         triggerSystem = new TriggerSystem();
     }
 
-    void OnTriggerStay(Collider collider)
+    private void OnTriggerEnter(Collider collider)
     {
-        triggerSystem.Interact(TradeForItem, collider);
+        if (doOnce)
+        {
+            triggerSystem.Interact(TradeForItem, collider);
+        }
     }
 
-    void TradeForItem()
+    private void TradeForItem()
     {
         if (Berries.berryAmount >= 2)
         {
@@ -28,6 +30,7 @@ public class Trader : MonoBehaviour
             UI.UpdateBerries(Berries.berryAmount);
             Vector3 position = transform.position + new Vector3(0, 0, +(-1));
             Instantiate(ces, position, transform.rotation);
+            doOnce = false;
         }
     }
 }

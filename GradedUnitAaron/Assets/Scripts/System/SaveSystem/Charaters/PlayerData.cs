@@ -41,29 +41,6 @@ public class PlayerData
 
     public PlayerData(PlayerBase player)
     {
-        m_position = new float[3];
-        m_position[0] = player.transform.position.x;
-        m_position[1] = player.transform.position.y;
-        m_position[2] = player.transform.position.z;
-
-
-        m_walkSpeed = player.m_WalkSpeed;
-        m_runSpeed = player.m_RunSpeed;
-        m_jumpSpeed = player.m_JumpSpeed;
-        m_jumpHeight = player.m_JumpHeight;
-
-        m_staminaMax = player.m_StaminaMax;
-        m_refillStaminaSpeed = player.m_RefillStaminaSpeed;
-
-        m_healthCurrent = player.m_HealthCurrent;
-        m_healthMax = player.m_HealthMax;
-        m_refillHealth = player.m_HealthMax;
-
-        m_attackDamage = player.m_AttackDamage;
-        m_attackDamageSpeed = player.m_AttackDamageSpeed;
-
-        m_defence = player.m_Defence;
-        m_defenceMax = player.m_DefenceMax;
 
         //m_reputation = rep.reputation;
         //m_cameraMode = camera.view;

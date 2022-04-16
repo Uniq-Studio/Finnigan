@@ -1,19 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Berries : MonoBehaviour
 {
-    UIUpdater UI;
-    Inventory inventory;
-    TriggerSystem triggerSystem;
+    private UIUpdater UI;
+    private Inventory inventory;
+    private TriggerSystem triggerSystem;
 
     public GameObject berries;
-    public static int berryAmount;
+    public static int berryAmount = 300;
+
+    private bool doOnce = true;
 
     private int points;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         //Call this to get access to the methods
         UI = FindObjectOfType<UIUpdater>();
@@ -21,30 +23,47 @@ public class Berries : MonoBehaviour
         triggerSystem = new TriggerSystem();
     }
 
-
-
-    void OnTriggerStay(Collider collider)
+    private void Update()
     {
-        triggerSystem.Interact(GetBerries, collider);
+        if (berryAmount <= 0)
+        {
+            inventory.RemoveItem(0);
+        }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (doOnce)
+        {
+            triggerSystem.Interact(GetBerries, collider);
+            doOnce = false;
+        }
     }
 
     /*Gives the player a random amount of berries
      * updates the ui with the new amount
      * remove the berries from the bush
      * and starts the respawn method */
-    void GetBerries()
+
+    private void GetBerries()
     {
-        berryAmount = Mathf.FloorToInt(Random.Range(3, 8));
-        inventory.GiveItem(0);
+        berryAmount += Mathf.FloorToInt(Random.Range(3, 8));
         UI.UpdateBerries(berryAmount);
         berries.gameObject.SetActive(false);
+        doOnce = false;
         StartCoroutine(RespawnBerries());
+        if (berryAmount >= 1)
+        {
+            inventory.GiveItem(0);
+        }
     }
 
     /* Respawn after around a couple of minutes */
-    IEnumerator RespawnBerries()
+
+    private IEnumerator RespawnBerries()
     {
-        yield return new WaitForSeconds(Random.Range(600, 900));
+        yield return new WaitForSeconds(Random.Range(3, 5));
         berries.gameObject.SetActive(true);
+        doOnce = true;
     }
 }

@@ -1,47 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Snail : MonoBehaviour
 {
     public GameObject m_gameObject;
-    int m_RepPoints = 10;
     public Rigidbody m_Rigidbody;
-
-    Reputation m_Reputation;
-    SoundEffects m_SoundEffects;
-    private TriggerSystem m_triggerSystem;
-
     private bool m_CloseToHelp = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        m_Reputation = FindObjectOfType<Reputation>();
-        m_SoundEffects = FindObjectOfType<SoundEffects>();
-        m_triggerSystem = new TriggerSystem();
-    }
-
-    void Update()
-    {
-    }
-
-    void Help()
+    private int m_RepPoints = 10;
+    private Reputation m_Reputation;
+    private SoundEffects m_SoundEffects;
+    private TriggerSystem m_triggerSystem = new TriggerSystem();
+    private void Help()
     {
         StartCoroutine(HelpExecute());
     }
 
-    #region Check if player Is close
-    void OnTriggerStay(Collider collider)
-    {
-        m_triggerSystem.Interact(Help, collider);
-    }
-
-    #endregion
-
-    
-
-    IEnumerator HelpExecute()
+    private IEnumerator HelpExecute()
     {
         //Flip him over
         transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
@@ -52,10 +26,27 @@ public class Snail : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         //Gives you 10 points
         m_Reputation.AddPoints(m_RepPoints);
-        //Destroy actor 
+        //Destroy actor
         Destroy(m_gameObject);
     }
+
+    // Start is called before the first frame update
+    private void Start()
+    {
+        m_Reputation = FindObjectOfType<Reputation>();
+        m_SoundEffects = FindObjectOfType<SoundEffects>();
+    }
+
+    #region Check if player Is close
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        m_triggerSystem.Interact(Help, collider);
+    }
+
+    #endregion Check if player Is close
 }
+
 /*
  * Because of the new Visual Studio Update of
  * predictive text, I look up what VS recommends
