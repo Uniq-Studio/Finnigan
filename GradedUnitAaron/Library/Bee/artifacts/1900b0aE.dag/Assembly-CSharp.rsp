@@ -377,6 +377,8 @@
 "Assets/Scripts/2.GameView/Terrain/ChunkLoader.cs"
 "Assets/Scripts/2.GameView/Terrain/ObjectHider.cs"
 "Assets/Scripts/2.GameView/Terrain/SplitTerrain.cs"
+"Assets/Scripts/2.GameView/Town/SpawnAndPlace.cs"
+"Assets/Scripts/2.GameView/Town/TownLogic.cs"
 "Assets/Scripts/2.GameView/World Items/Berries.cs"
 "Assets/Scripts/2.GameView/World Items/Corn incrusted Stick/CornEncrustedStick.cs"
 "Assets/Scripts/2.GameView/World Items/FoodBox.cs"

@@ -68,6 +68,8 @@ public class FoodStealer : MonoBehaviour
         if (FoodBox.attackAttempts >= 3)
         {
             Debug.Log("DIALOG FOR VILLAGE");
+            UI.UpdateTask("Lets explore and find the village");
+            Destroy(self);
         }
     }
 
