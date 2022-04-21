@@ -50,6 +50,7 @@ public class SpawnAndPlace : MonoBehaviour
         //Stops when Raider leaves
         if (collider.CompareTag("Raider"))
         {
+            Debug.Log("I see him");
             StopCoroutine(TakeDamage());
         }
     }
@@ -68,7 +69,7 @@ public class SpawnAndPlace : MonoBehaviour
         while (durability >= 1)
         {
             durability--;
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(1);
         }
     }
 

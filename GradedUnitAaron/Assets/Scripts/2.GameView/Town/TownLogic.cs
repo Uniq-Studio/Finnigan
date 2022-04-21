@@ -18,6 +18,7 @@ public class TownLogic : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             UI.UpdateTask("Welcome to the Village! Lets talk to someone");
+            Tasks.discoveredVillage = true;
             m_Collider.enabled = false;
         }
     }

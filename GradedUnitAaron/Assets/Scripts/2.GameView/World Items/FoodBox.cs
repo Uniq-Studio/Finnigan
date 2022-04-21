@@ -15,6 +15,7 @@ public class FoodBox : MonoBehaviour
     {
         UI.UpdateTask("You're low on food, Find bushes and pick the berries! Then drop them in.");
         getTask = false;
+        Tasks.checkedFood = true;
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -25,10 +26,11 @@ public class FoodBox : MonoBehaviour
         }
         else if (!getTask && Berries.berryAmount >= 1)
         {
-            storage += Berries.berryAmount;
-            Berries.berryAmount = 0;
+            storage += Berries.berryAmount - 50;
+            Berries.berryAmount = 50;
             UI.UpdateBerries(Berries.berryAmount);
             UI.UpdateBerriesBox(storage);
+            Tasks.filledFoodBox = true;
         }
     }
 
