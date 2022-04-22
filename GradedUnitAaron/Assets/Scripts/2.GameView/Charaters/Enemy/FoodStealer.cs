@@ -62,6 +62,7 @@ public class FoodStealer : MonoBehaviour
         if (m_CharacterBase.health <= 0 && FoodBox.attackAttempts < 3)
         {
             FoodBox.doOnce = false;
+            UI.UpdateTask("They are gone! Time to get more berries.");
             Destroy(self);
         }
 

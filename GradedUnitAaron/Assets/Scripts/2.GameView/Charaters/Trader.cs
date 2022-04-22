@@ -24,10 +24,10 @@ public class Trader : MonoBehaviour
 
     private void TradeForItem()
     {
-        if (Berries.berryAmount >= 2)
+        if (Inventory.berryAmount >= 2)
         {
-            Berries.berryAmount -= 2;
-            UI.UpdateBerries(Berries.berryAmount);
+            Inventory.berryAmount -= 2;
+            UI.UpdateBerries(Inventory.berryAmount);
             Vector3 position = transform.position + new Vector3(0, 0, +(-1));
             Instantiate(ces, position, transform.rotation);
             doOnce = false;

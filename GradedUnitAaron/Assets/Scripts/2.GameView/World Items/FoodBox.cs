@@ -24,11 +24,11 @@ public class FoodBox : MonoBehaviour
         {
             m_TriggerSystem.Interact(LowFood, collider);
         }
-        else if (!getTask && Berries.berryAmount >= 1)
+        else if (!getTask && Inventory.berryAmount >= 1)
         {
-            storage += Berries.berryAmount - 50;
-            Berries.berryAmount = 50;
-            UI.UpdateBerries(Berries.berryAmount);
+            storage += Inventory.berryAmount;
+            Inventory.berryAmount = 0;
+            UI.UpdateBerries(Inventory.berryAmount);
             UI.UpdateBerriesBox(storage);
             Tasks.filledFoodBox = true;
         }
@@ -43,6 +43,7 @@ public class FoodBox : MonoBehaviour
     IEnumerator SpawnStealer()
     {
         yield return new WaitForSeconds(5);
+        UI.UpdateTask("Oh no, They are stealing your food from your food box!");
         Vector3 foodStealerLocation = transform.position + new Vector3(-2, +1, 0);
         Instantiate(stealerPrefab, foodStealerLocation, Quaternion.Euler(0,90,0));
         attackAttempts++;
