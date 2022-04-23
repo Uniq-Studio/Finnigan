@@ -388,6 +388,7 @@
 "Assets/Scripts/2.GameView/World Items/Interactables/Leaf.cs"
 "Assets/Scripts/2.GameView/World Items/Interactables/Sick.cs"
 "Assets/Scripts/2.GameView/World Items/Interactables/Stone.cs"
+"Assets/Scripts/2.GameView/World Items/Interactables/TreeSpawnIn.cs"
 "Assets/Scripts/System/AttackSystem.cs"
 "Assets/Scripts/System/CameraViews.cs"
 "Assets/Scripts/System/SaveSystem/Charaters/PlayerData.cs"
