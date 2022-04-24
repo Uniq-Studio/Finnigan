@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2278.5557, g: 2211.2695, b: 2682.1172, a: 1}
+  m_IndirectSpecularColor: {r: 2276.8564, g: 2194.1426, b: 2626.2812, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -560,12 +560,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80d5d4bd815c894bad00dda27387d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durability: 0
-  self: {fileID: 0}
-  rb: {fileID: 0}
-  DF1: {fileID: 1807894078}
-  DF2: {fileID: 0}
-  DF3: {fileID: 0}
 --- !u!114 &7056247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53759,7 +53753,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1263193113}
-  - component: {fileID: 1263193112}
   m_Layer: 0
   m_Name: DebugScripts
   m_TagString: Untagged
@@ -53767,18 +53760,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1263193112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1263193111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39dce1db51fea9d45afd9cf639ba159d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1263193113
 Transform:
   m_ObjectHideFlags: 0
@@ -55914,8 +55895,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a432b0ac0fbaed4da71444b446f7bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDatabase: {fileID: 0}
-  inventoryUI: {fileID: 0}
 --- !u!1001 &1297477062
 PrefabInstance:
   m_ObjectHideFlags: 0

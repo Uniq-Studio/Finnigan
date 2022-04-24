@@ -20,6 +20,7 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Berries: "  + berryAmount + " Stone: " + stoneAmount + " Stick: " + stickAmount + " leaf: " + leafAmount);
         if (berryAmount <= 0)
         {
             RemoveItem(0);

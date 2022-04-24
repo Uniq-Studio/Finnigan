@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class FoodStealer : MonoBehaviour
 {
-    
-    private bool inCombat = false;
+    private bool inCombat;
     private CharacterBase m_CharacterBase = new CharacterBase();
     private UIUpdater UI;
     
@@ -12,36 +11,24 @@ public class FoodStealer : MonoBehaviour
     public GameObject self;
 
     bool doOnce;
+    private bool doOnceReheal;
+    private bool doOnceDamage;
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("PlayerAttack"))
+        if (collider.CompareTag("PlayerAttack") && !doOnceDamage)
         {
-            inCombat = true;
-            m_CharacterBase.health--;
+            StartCoroutine(TakeHealth());
         }
     }
 
-    private void Reheal()
+    IEnumerator TakeHealth()
     {
-        if (m_CharacterBase.health < m_CharacterBase.healthMax)
-        {
-            m_CharacterBase.health++;
-        }
-    }
-
-    void AttackPlayer()
-    {
-        if (Vector3.Distance(transform.position, PlayerBase.m_Transform.position) >= 3)
-        {
-                transform.LookAt(PlayerBase.m_Transform);
-                transform.position += transform.forward * m_CharacterBase.walkSpeed * Time.deltaTime;
-        }
-
-        if (Vector3.Distance(transform.position, PlayerBase.m_Transform.position) <= 3)
-        { 
-            //PlayerBase.m_CharacterBase.health--;
-        }
+        inCombat = true;
+        m_CharacterBase.health--;
+        doOnceDamage = true;
+        yield return new WaitForSeconds(1);
+        doOnceDamage = false;
     }
 
     void Dead()
@@ -67,24 +54,29 @@ public class FoodStealer : MonoBehaviour
         UI = FindObjectOfType<UIUpdater>();
         m_CharacterBase.health = 5;
         m_CharacterBase.healthMax = 5;
-        m_CharacterBase.walkSpeed = 2;
     }
 
     // Update is called once per frame
     private void Update()
     {
+        Debug.Log(m_CharacterBase.health);
         if (!inCombat)
         {
             StartCoroutine(StealingLoop());
         }
         else if (m_CharacterBase.health >= 1 && inCombat)
         {
-            AttackPlayer();
+            FollowAttackPlayer.enabled = true;
         }
 
         if (m_CharacterBase.health <= 0)
         {
             Dead();
+        }
+
+        if (!doOnceReheal)
+        {
+            StartCoroutine(Reheal());
         }
         
     }
@@ -107,6 +99,26 @@ public class FoodStealer : MonoBehaviour
             yield return new WaitForSeconds(2);
             doOnce = false;
         }
+        
+    }
+
+    IEnumerator Reheal()
+    {
+        if (!doOnceReheal){
+            if (m_CharacterBase.health < m_CharacterBase.healthMax)
+            {
+                m_CharacterBase.health++;
+            }
+
+            if (m_CharacterBase.health > m_CharacterBase.healthMax)
+            {
+                m_CharacterBase.health = m_CharacterBase.healthMax;
+            }
+
+            doOnceReheal = true;
+            }
+        yield return new WaitForSeconds(3);
+        doOnceReheal = false;
         
     }
 }

@@ -17,7 +17,6 @@ public class PlayerBase : MonoBehaviour
 
     void Update()
     {
-
         if (m_CharacterBase.health <= 0)
         {
             Dead();
@@ -37,6 +36,6 @@ public class PlayerBase : MonoBehaviour
     void Dead()
     {
         //Restart Level from Last Save;
-        SceneManager.LoadScene(0);
+        Debug.LogError("YOU DIED!");
     }
 }

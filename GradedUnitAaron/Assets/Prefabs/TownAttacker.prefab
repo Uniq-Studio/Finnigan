@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4283536250866096164}
   - component: {fileID: 7883229780708220947}
   - component: {fileID: 9005504079582506345}
+  - component: {fileID: 5978354118807399594}
   m_Layer: 0
   m_Name: TownAttacker
   m_TagString: Raider
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4013626836489206690}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 297.3, y: 83.9, z: 138.2}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3785452274467508288}
@@ -90,6 +91,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20, y: 15, z: 20}
   m_Center: {x: 0, y: 7.5, z: 2}
+--- !u!114 &5978354118807399594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4013626836489206690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33fd5c4879355074da5437e7fb3c9487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5349871427531735931
 GameObject:
   m_ObjectHideFlags: 0

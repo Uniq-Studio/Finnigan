@@ -370,7 +370,7 @@
 "Assets/Scripts/2.GameView/Blockers/WallBlock.cs"
 "Assets/Scripts/2.GameView/Charaters/Base/CharaterBase.cs"
 "Assets/Scripts/2.GameView/Charaters/Enemy/Boss.cs"
-"Assets/Scripts/2.GameView/Charaters/Enemy/DEBUGTEST.cs"
+"Assets/Scripts/2.GameView/Charaters/Enemy/FollowAttackPlayer.cs"
 "Assets/Scripts/2.GameView/Charaters/Enemy/FoodStealer.cs"
 "Assets/Scripts/2.GameView/Charaters/Enemy/Spawner.cs"
 "Assets/Scripts/2.GameView/Charaters/Enemy/TownAttacker.cs"
