@@ -6,19 +6,21 @@ public class Tasks : MonoBehaviour
 {
     public static bool checkedFood;
     public static bool filledFoodBox;
+    public static bool filledFoodBoxOver100;
+    public static bool allFoodStealersGone;
     public static bool discoveredVillage;
-    public static bool helpedSnail;
-    public static bool defenceOne = true;
-    public static bool defenceTwo = true;
-    public static bool defenceThree = true;
+    public static bool startDefenceOne;
+    public static bool startDefenceTwo;
+    public static bool startDefenceThree;
+    public static bool talkToTheEnemy;
 
     public static bool allComplete;
 
     void Update()
     {
-        if(checkedFood && filledFoodBox && discoveredVillage && helpedSnail && defenceOne && defenceTwo && defenceThree)
+        if (FoodBox.storage > 100)
         {
-            allComplete = true;
+            filledFoodBoxOver100 = true;
         }
     }
 }

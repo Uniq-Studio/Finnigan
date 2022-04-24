@@ -9,8 +9,6 @@ public class Boss : MonoBehaviour
     private CharacterBase m_CharacterBase = new CharacterBase();
     private TriggerSystem m_TriggerSystem = new TriggerSystem();
 
-    private bool unlocked;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -19,10 +17,6 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Tasks.allComplete)
-        {
-            unlocked = true;
-        }
     }
     void OnTriggerEnter(Collider collider)
     {
@@ -33,7 +27,7 @@ public class Boss : MonoBehaviour
     //For now it goes to the Main Menu
     void EndGame()
     {
-        if (HasStick && unlocked)
+        if (HasStick)
         {
             Debug.Log("Game Over");
             MainMenu.gameOver = true;

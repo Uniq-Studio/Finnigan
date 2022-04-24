@@ -10,24 +10,55 @@ public class Spawner : MonoBehaviour
     public GameObject Spawner3;
 
     private int num;
-
-    private int max = 5;
+    private int max;
 
     private bool doOnce = false;
+    private bool round1;
+    private bool round2;
+    private bool round3;
 
-    private bool unlocked = false;
     // Start is called before the first frame update
     void Update()
     {
-        if (true)
+        if (Tasks.startDefenceOne && !round1)
         {
-            unlocked = true;
+            max = 10;
+            if (!doOnce && max > 0)
+            {
+                StartCoroutine(SpawnIn());
+            }
+            if (max <= 0)
+            {
+                round1 = true;
+            }
         }
-        if (!doOnce && max > 0 && unlocked)
+
+        if (Tasks.startDefenceTwo && !round2)
         {
-            StartCoroutine(SpawnIn());
+            max = 20;
+            if (!doOnce && max > 0)
+            {
+                StartCoroutine(SpawnIn());
+            }
+            if (max <= 0)
+            {
+                round1 = true;
+            }
         }
-            
+
+        if (Tasks.startDefenceThree && !round3)
+        {
+            max = 30;
+            if (!doOnce && max > 0)
+            {
+                StartCoroutine(SpawnIn());
+            }
+            if (max <= 0)
+            {
+                round3 = true;
+            }
+        }
+
     }
 
     IEnumerator SpawnIn()

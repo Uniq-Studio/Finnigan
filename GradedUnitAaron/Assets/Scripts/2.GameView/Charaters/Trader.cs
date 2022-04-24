@@ -24,11 +24,11 @@ public class Trader : MonoBehaviour
 
     private void TradeForItem()
     {
-        if (Inventory.berryAmount >= 2)
+        if (Inventory.berryAmount >= 2 && Inventory.leafAmount >= 2 && Inventory.stickAmount >= 2 && Inventory.stoneAmount >=2 && Reputation.reputation >= 3)
         {
             Inventory.berryAmount -= 2;
             UI.UpdateBerries(Inventory.berryAmount);
-            Vector3 position = transform.position + new Vector3(0, 0, +(-1));
+            Vector3 position = transform.position + new Vector3(0, 0, +(-3));
             Instantiate(ces, position, transform.rotation);
             doOnce = false;
         }

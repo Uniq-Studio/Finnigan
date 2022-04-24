@@ -17,7 +17,15 @@ public class Berries : Interactable //0
     }
     private IEnumerator RespawnBerries()
     {
-        yield return new WaitForSeconds(Random.Range(600, 900));
+        if (Tasks.filledFoodBoxOver100)
+        {
+            yield return new WaitForSeconds(Random.Range(300, 450));
+        }
+        else
+        {
+            yield return new WaitForSeconds(Random.Range(30, 60));
+        }
+        
         berries.gameObject.SetActive(true);
         doOnce = false;
     }

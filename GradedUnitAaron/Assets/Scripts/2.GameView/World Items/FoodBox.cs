@@ -57,6 +57,11 @@ public class FoodBox : MonoBehaviour
             doOnce = true;
         }
 
+        if (storage >= 100)
+        {
+            Tasks.filledFoodBoxOver100 = true;
+        }
+
     }
 }
 //https://answers.unity.com/questions/399924/using-a-custom-rotation-in-instantiate.html

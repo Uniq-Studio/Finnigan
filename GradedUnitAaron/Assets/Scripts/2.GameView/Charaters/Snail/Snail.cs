@@ -26,7 +26,6 @@ public class Snail : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         //Gives you 10 points
         m_Reputation.AddPoints(m_RepPoints);
-        Tasks.helpedSnail = true;
         //Destroy actor
         Destroy(m_gameObject);
     }

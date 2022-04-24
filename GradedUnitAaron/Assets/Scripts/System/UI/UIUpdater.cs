@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,9 @@ public class UIUpdater : MonoBehaviour
     public Text berries;
     public Text berriesInBox;
     public Text task;
+
+    private string mainTask;
+    private string subTask;
 
     public GameObject banner;
     
@@ -39,16 +43,32 @@ public class UIUpdater : MonoBehaviour
     /* This method get called when a new task is given */
     public void UpdateTask(string includedText)
     {
-        task.text = "Task: " + includedText;
+        mainTask = "Task: " + includedText;
+        task.text = mainTask;
         StartCoroutine(DisplayBanner());
     }
 
+    public void UpdateSubTask(string includedText)
+    {
+        subTask = "Warning: " + includedText;
+        task.text = subTask;
+        StartCoroutine(ResetDisplayBanner());
+    }
+
     /* Displays it for a few seconds then hides it again 
-     * untill its been called again */
+     * until its been called again */
     IEnumerator DisplayBanner()
     {
         banner.gameObject.SetActive(true);
         yield return new WaitForSeconds(5);
         banner.gameObject.SetActive(false);
+    }
+
+    IEnumerator ResetDisplayBanner()
+    {
+        StartCoroutine(DisplayBanner());
+        yield return new WaitForSeconds(6);
+        task.text = mainTask;
+        StartCoroutine(DisplayBanner());
     }
 }
