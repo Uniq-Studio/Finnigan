@@ -16,7 +16,7 @@ public class TradeForDefence : MonoBehaviour
     void Update()
     {
         Debug.Log(round);
-        Debug.Log(Tasks.startDefenceOne +" "+ Tasks.startDefenceTwo +" "+ Tasks.startDefenceThree);
+        Debug.Log(Tasks.startDefenseOne +" "+ Tasks.startDefenseTwo +" "+ Tasks.startDefenseThree);
     }
 
     void OnTriggerEnter(Collider collider)
@@ -76,15 +76,15 @@ public class TradeForDefence : MonoBehaviour
     {
         if (round == 0)
         {
-            Tasks.startDefenceOne = true;
+            Tasks.startDefenseOne = true;
         }
         else if (round == 1)
         {
-            Tasks.startDefenceTwo = true;
+            Tasks.startDefenseTwo = true;
         }
         else if (round == 2)
         {
-            Tasks.startDefenceThree = true;
+            Tasks.startDefenseThree = true;
         }
     }
 }

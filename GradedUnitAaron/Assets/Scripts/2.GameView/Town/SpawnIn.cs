@@ -11,16 +11,16 @@ public class SpawnIn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Tasks.startDefenceOne && !Tasks.startDefenceTwo && !Tasks.startDefenceThree)
+        if (Tasks.startDefenseOne && !Tasks.startDefenseTwo && !Tasks.startDefenseThree)
         {
             DF1.gameObject.SetActive(true);
         }
-        else if (Tasks.startDefenceOne && Tasks.startDefenceTwo && !Tasks.startDefenceThree)
+        else if (Tasks.startDefenseOne && Tasks.startDefenseTwo && !Tasks.startDefenseThree)
         {
             DF1.gameObject.SetActive(false);
             DF2.gameObject.SetActive(true);
         }
-        else if (Tasks.startDefenceOne && Tasks.startDefenceTwo && Tasks.startDefenceThree)
+        else if (Tasks.startDefenseOne && Tasks.startDefenseTwo && Tasks.startDefenseThree)
         {
             DF2.gameObject.SetActive(false);
             DF3.gameObject.SetActive(true);

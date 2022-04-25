@@ -20,7 +20,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
-        if (Tasks.startDefenceOne && !round1)
+        if (Tasks.startDefenseOne && !round1)
         {
             max = 10;
             if (!doOnce && max > 0)
@@ -33,7 +33,7 @@ public class Spawner : MonoBehaviour
             }
         }
 
-        if (Tasks.startDefenceTwo && !round2)
+        if (Tasks.startDefenseTwo && !round2)
         {
             max = 20;
             if (!doOnce && max > 0)
@@ -46,7 +46,7 @@ public class Spawner : MonoBehaviour
             }
         }
 
-        if (Tasks.startDefenceThree && !round3)
+        if (Tasks.startDefenseThree && !round3)
         {
             max = 30;
             if (!doOnce && max > 0)

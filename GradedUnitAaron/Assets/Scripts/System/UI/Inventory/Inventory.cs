@@ -7,13 +7,13 @@ public class Inventory : MonoBehaviour
     public ItemDatabase itemDatabase;
     public UIInventory inventoryUI;
 
-    public static int berryAmount = 45;
+    public static int berryAmount;
     public static bool berriesShowing;
-    public static int stoneAmount = 45;
+    public static int stoneAmount;
     public static bool stoneShowing;
-    public static int stickAmount = 45;
+    public static int stickAmount;
     public static bool stickShowing;
-    public static int leafAmount = 45;
+    public static int leafAmount;
     public static bool leafShowing;
 
     

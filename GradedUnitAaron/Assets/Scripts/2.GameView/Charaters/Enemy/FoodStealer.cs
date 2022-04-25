@@ -78,7 +78,7 @@ public class FoodStealer : MonoBehaviour
         {
             StartCoroutine(Reheal());
         }
-        
+
     }
 
     IEnumerator StealingLoop()

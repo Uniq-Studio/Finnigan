@@ -8,9 +8,12 @@ public class TownAttacker : MonoBehaviour
     private int num;
     private bool combat;
 
+    private bool doOnceReheal;
+
     void Start()
     {
         m_CharacterBase.walkSpeed = 5;
+        m_CharacterBase.health = 10;
         num = Mathf.RoundToInt(Random.Range(1, 6));
         Debug.Log("Im going for " + num);
     }
@@ -50,6 +53,11 @@ public class TownAttacker : MonoBehaviour
         {
             FollowAttackPlayer.enabled = true;
         }
+
+        if (!doOnceReheal)
+        {
+            StartCoroutine(Reheal());
+        }
     }
 
     void OnTriggerEnter(Collider collider)
@@ -65,4 +73,25 @@ public class TownAttacker : MonoBehaviour
     {
         transform.LookAt(new Vector3(x, y, z));
     }
+    IEnumerator Reheal()
+    {
+        if (!doOnceReheal)
+        {
+            if (m_CharacterBase.health < m_CharacterBase.healthMax)
+            {
+                m_CharacterBase.health++;
+            }
+
+            if (m_CharacterBase.health > m_CharacterBase.healthMax)
+            {
+                m_CharacterBase.health = m_CharacterBase.healthMax;
+            }
+
+            doOnceReheal = true;
+        }
+        yield return new WaitForSeconds(3);
+        doOnceReheal = false;
+
+    }
 }
+
