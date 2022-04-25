@@ -9,11 +9,19 @@ public class TradeForDefence : MonoBehaviour
     private bool doneDefThree = false;
 
     private bool doOnce;
+    private bool add1Once;
 
     private int round;
 
+    void Update()
+    {
+        Debug.Log(round);
+        Debug.Log(Tasks.startDefenceOne +" "+ Tasks.startDefenceTwo +" "+ Tasks.startDefenceThree);
+    }
+
     void OnTriggerEnter(Collider collider)
     {
+        add1Once = false;
         if (collider.CompareTag("Player"))
         {
             if (round == 0)
@@ -34,24 +42,34 @@ public class TradeForDefence : MonoBehaviour
 
     void OnTriggerExit(Collider collider)
     {
-        round++;
+        if (!add1Once)
+        {
+            round ++;
+            doOnce = false;
+            add1Once = true;
+        }
     }
 
     void InventoryCheck(int amount)
     {
-        if (Inventory.berryAmount >= amount &&
-            Inventory.leafAmount >= amount &&
-            Inventory.stoneAmount >= amount &&
-            Inventory.stickAmount >= amount &&
-            Reputation.reputation >= 3)
+        if (!doOnce)
         {
-            Inventory.berryAmount -= amount;
-            Inventory.leafAmount -= amount;
-            Inventory.stoneAmount -= amount;
-            Inventory.stickAmount -= amount;
+            if (Inventory.berryAmount >= amount &&
+                Inventory.leafAmount >= amount &&
+                Inventory.stoneAmount >= amount &&
+                Inventory.stickAmount >= amount &&
+                Reputation.reputation >= 3)
+            {
+                Inventory.berryAmount -= amount;
+                Inventory.leafAmount -= amount;
+                Inventory.stoneAmount -= amount;
+                Inventory.stickAmount -= amount;
 
-            DefenceSpawn();
+                DefenceSpawn();
+                doOnce = true;
+            }
         }
+        
     }
 
     void DefenceSpawn()
