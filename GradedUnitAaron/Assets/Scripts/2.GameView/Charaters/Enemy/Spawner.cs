@@ -9,6 +9,8 @@ public class Spawner : MonoBehaviour
     public GameObject Spawner2;
     public GameObject Spawner3;
 
+    private UIUpdater UI;
+
     private int num;
     private int max;
 
@@ -17,7 +19,11 @@ public class Spawner : MonoBehaviour
     private bool round2;
     private bool round3;
 
-    // Start is called before the first frame update
+    void Start()
+    {
+        UI = FindObjectOfType<UIUpdater>();
+    }
+
     void Update()
     {
         if (Tasks.startDefenseOne && !round1)
@@ -63,10 +69,11 @@ public class Spawner : MonoBehaviour
 
     IEnumerator SpawnIn()
     {
+        new WaitForSeconds(4);
         num = Mathf.RoundToInt(Random.Range(1, 4));
         switch (num)
         {
-                case 1:
+            case 1:
                     Instantiate(Attacker, Spawner1.transform.position, transform.rotation);
                     break;
                 case 2:
@@ -76,10 +83,10 @@ public class Spawner : MonoBehaviour
                     Instantiate(Attacker, Spawner3.transform.position, transform.rotation);
                     break;
         }
-
+        UI.UpdateSubTask("Here comes another one!");
         doOnce = true;
         max--;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
         doOnce = false;
     }
 }

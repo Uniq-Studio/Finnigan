@@ -15,7 +15,7 @@ using UnityEngine;
 public class FPS : MonoBehaviour
 {
 
-    private float speed = 10f;
+    private float speed = 5f;
     private float m_MovX;
     private float m_MovY;
     private Vector3 m_moveHorizontal;

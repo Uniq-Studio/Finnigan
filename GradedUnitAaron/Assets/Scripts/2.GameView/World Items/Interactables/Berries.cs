@@ -12,7 +12,7 @@ public class Berries : Interactable // ID:  0
      */
     #endregion
     private bool doOnce;
-    public GameObject self;
+    public GameObject berries;
     #endregion
 
     #region Unity Triggers
@@ -28,10 +28,9 @@ public class Berries : Interactable // ID:  0
         #endregion
         if (collider.CompareTag("Player") && !doOnce)
         {
-            GetItem(self, 3);
+            GetItem(berries, 0);
             doOnce = true;
             StartCoroutine(RespawnBerries());
-            StartCoroutine(SelfDestroy(self));
         }
     }
     #endregion
@@ -58,7 +57,7 @@ public class Berries : Interactable // ID:  0
             yield return new WaitForSeconds(Random.Range(30, 60));
         }
 
-        self.gameObject.SetActive(true);
+        berries.gameObject.SetActive(true);
         doOnce = false;
     }
     #endregion
@@ -78,6 +77,7 @@ public class Berries : Interactable // ID:  0
 
 #region Edit Logs
 //Date: Mon, 25 Apr 2022 | Time: 17:34 | Edit by: Aaron Hamilton
+//Date: Mon, 25 Apr 2022 | Time: 18:24 | Edit by: Aaron Hamilton
 #endregion
 
 #region Sources

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stick : Interactable // ID: 2
+public class Sick : Interactable // ID: 2
 {
     #region Variables
     #region Comment
