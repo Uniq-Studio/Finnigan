@@ -7,20 +7,20 @@ public class Inventory : MonoBehaviour
     public ItemDatabase itemDatabase;
     public UIInventory inventoryUI;
 
-    public static int berryAmount = 100;
+    public static int berryAmount = 1000;
     public static bool berriesShowing;
-    public static int stoneAmount = 100;
+    public static int stoneAmount = 1000;
     public static bool stoneShowing;
-    public static int stickAmount = 100;
+    public static int stickAmount = 1000;
     public static bool stickShowing;
-    public static int leafAmount = 100;
+    public static int leafAmount = 1000;
     public static bool leafShowing;
 
     
 
     void Update()
     {
-        Debug.Log("Berries: "  + berryAmount + " Stone: " + stoneAmount + " Stick: " + stickAmount + " leaf: " + leafAmount);
+        //Debug.Log("Berries: "  + berryAmount + " Stone: " + stoneAmount + " Stick: " + stickAmount + " leaf: " + leafAmount);
         if (berryAmount <= 0)
         {
             RemoveItem(0);
