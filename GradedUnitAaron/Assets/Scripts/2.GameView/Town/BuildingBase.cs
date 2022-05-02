@@ -50,7 +50,7 @@ public class BuildingBase : MonoBehaviour
         }
         else
         {
-            UI.UpdateSubTask("You don't have enough!");
+            UI.UpdateTask("You need " + Berries + " Berries, " + Stones + " Stones, " + Leafs + " leafs, " + Sticks + " sticks to continue");
         }
     }
 
@@ -67,7 +67,6 @@ public class BuildingBase : MonoBehaviour
 
     public IEnumerator Timer(int length, passingMethod method, string nextBuilding)
     {
-        UI = FindObjectOfType<UIUpdater>();
         UI.UpdateTask("Now we need to wait till they are done!");
         Debug.Log("Timer started");
         yield return new WaitForSeconds(length);

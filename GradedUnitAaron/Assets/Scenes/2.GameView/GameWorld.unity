@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2277.0059, g: 2194.5586, b: 2627.668, a: 1}
+  m_IndirectSpecularColor: {r: 2279.1152, g: 2208.9102, b: 2672.4688, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3490,6 +3490,7 @@ MonoBehaviour:
   Miners: {fileID: 928072858}
   Forgers: {fileID: 515576006}
   Defense: {fileID: 1635850431}
+  CES: {fileID: 2715979778540613435, guid: 6e5fccaa6cfba6a4483830158375fa27, type: 3}
 --- !u!65 &78083374
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20852,6 +20853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac10ec83a7566b4bbc0666766245fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UI: {fileID: 0}
 --- !u!1 &449657543 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3830801503532763657, guid: c8d6ff8da70fce64cb04d008fce7982e,
@@ -23970,6 +23972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dbcd87763f8c654896607d7daaeeab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UI: {fileID: 0}
 --- !u!65 &515576008
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40243,6 +40246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c5510b919183b468ee555caf1548f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UI: {fileID: 0}
 --- !u!1 &928378366 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 131a759cd52b3e840817fcac92fd5b3f,
@@ -73552,6 +73556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3105c2b1a2bec924383944174e4d4491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UI: {fileID: 0}
 --- !u!65 &1635850433
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -88161,6 +88166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec1becbf8b77c7438e210dbce05a78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UI: {fileID: 0}
 --- !u!1001 &1907553473
 PrefabInstance:
   m_ObjectHideFlags: 0

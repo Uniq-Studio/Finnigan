@@ -28,6 +28,7 @@ public class Farmer : BuildingBase
             a new line.
          */
         #endregion
+        UI = FindObjectOfType<UIUpdater>();
     }
 
     void Update()
@@ -45,18 +46,26 @@ public class Farmer : BuildingBase
     {
         if (collider.CompareTag("Player") && !doOnce)
         {
-            switch (TownLogic.roundCount)
+            if (!Tasks.LearnAboutCES)
             {
-                case 0:
-                    RequirementsCheck(30, 10, 20, 5, 2, IncreaseMiner, "Miners");
-                    break;
-                case 1:
-                    RequirementsCheck(60, 25, 10, 10, 2, IncreaseMiner, "Miners");
-                    break;
-                case 2:
-                    RequirementsCheck(65, 30, 20, 20, 2, IncreaseMiner,"Miners");
-                    break;
+                switch (TownLogic.roundCount)
+                {
+                    case 0:
+                        RequirementsCheck(30, 10, 20, 5, 2, IncreaseNext, "Miners");
+                        break;
+                    case 1:
+                        RequirementsCheck(60, 25, 10, 10, 2, IncreaseNext, "Miners");
+                        break;
+                    case 2:
+                        RequirementsCheck(65, 30, 20, 20, 2, IncreaseNext, "Miners");
+                        break;
 
+                }
+            }
+            else if (Tasks.LearnAboutCES)
+            {
+                Debug.Log("IM HERE!");
+                RequirementsCheck( 25,30,15,40,2,IncreaseNext, "Miners");
             }
             doOnce = true;
         }
@@ -74,20 +83,27 @@ public class Farmer : BuildingBase
      */
     #endregion
 
-    void IncreaseMiner()
+    void IncreaseNext()
     {
-        switch (TownLogic.roundCount)
+        if (!Tasks.LearnAboutCES)
         {
-            case 0:
-                Miners.r1 = true;
-                break;
-            case 1:
-                Miners.r2 = true;
-                break;
-            case 2:
-                Miners.r3 = true;
-                break;
+            switch (TownLogic.roundCount)
+            {
+                case 0:
+                    Miners.r1 = true;
+                    break;
+                case 1:
+                    Miners.r2 = true;
+                    break;
+                case 2:
+                    Miners.r3 = true;
+                    break;
+            }
+        }else if (Tasks.LearnAboutCES)
+        {
+            Miners.CESEnabled = true;
         }
+        
         doOnce = false;
     }
 

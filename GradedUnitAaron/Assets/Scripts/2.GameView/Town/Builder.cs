@@ -16,15 +16,18 @@ public class Builder : MonoBehaviour
     public GameObject Miners;
     public GameObject Forgers;
     public GameObject Defense;
+    public GameObject CES;
 
     public static int count = 1;
 
     private bool doOnce;
     private bool buildTown;
+    private bool getOneStick;
 
     public static bool DefenseOneReady;
     public static bool DefenseTwoReady;
     public static bool DefenseThreeReady;
+    public static bool CESEnabled;
     #endregion
 
     #region Unity Triggers
@@ -37,62 +40,74 @@ public class Builder : MonoBehaviour
             a new line.
          */
         #endregion
+
     }
 
     void OnTriggerEnter(Collider collider)
     {
-        #region Build Town
-        #region Comment
-        /*
-            Comments that are multiline should
-            be around this length before starting
-            a new line.
-         */
-        #endregion
-        if (collider.CompareTag("Player") && !doOnce && !buildTown)
-        {
-            Debug.Log("Hey!");
-            switch (count)
+        
+            #region Build Town
+            #region Comment
+            /*
+                Comments that are multiline should
+                be around this length before starting
+                a new line.
+             */
+            #endregion
+            if (collider.CompareTag("Player") && !doOnce && !buildTown)
             {
-                case 1:
-                    Debug.Log("Switch 1");
-                    RequirementsCheck(30, 5, 10, 5, 2, Farmer);
-                    break;
-                case 2:
-                    Debug.Log("Switch 2");
-                    RequirementsCheck(20, 20, 5, 20, 2, Miners);
-                    break;
-                case 3:
-                    Debug.Log("Switch 3");
-                    RequirementsCheck(40, 30, 10, 30, 2, Forgers);
-                    break;
-                case 4:
-                    Debug.Log("Switch 4");
-                    RequirementsCheck(30, 40, 40, 40, 2, Defense);
-                    buildTown = true;
-                    break;
+                Debug.Log("Hey!");
+                switch (count)
+                {
+                    case 1:
+                        Debug.Log("Switch 1");
+                        RequirementsCheck(30, 5, 10, 5, 2, Farmer);
+                        break;
+                    case 2:
+                        Debug.Log("Switch 2");
+                        RequirementsCheck(20, 20, 5, 20, 2, Miners);
+                        break;
+                    case 3:
+                        Debug.Log("Switch 3");
+                        RequirementsCheck(40, 30, 10, 30, 2, Forgers);
+                        break;
+                    case 4:
+                        Debug.Log("Switch 4");
+                        RequirementsCheck(30, 40, 40, 40, 2, Defense);
+                        buildTown = true;
+                        break;
+                }
+
+                doOnce = true;
+            }
+            #endregion
+
+        if (!Tasks.LearnAboutCES) 
+        {
+            if (collider.CompareTag("Player") && buildTown && DefenseOneReady && !DefenseTwoReady && !DefenseThreeReady)
+            {
+                Tasks.startDefenseOne = true;
+                TownLogic.roundCount = 1;
             }
 
-            doOnce = true;
-        }
-        #endregion
+            if (collider.CompareTag("Player") && buildTown && DefenseOneReady && DefenseTwoReady && !DefenseThreeReady)
+            {
+                Tasks.startDefenseTwo = true;
+                TownLogic.roundCount = 2;
+            }
 
-        if (collider.CompareTag("Player") && buildTown && DefenseOneReady && !DefenseTwoReady && !DefenseThreeReady)
+            if (collider.CompareTag("Player") && buildTown && DefenseOneReady && DefenseTwoReady && DefenseThreeReady)
+            {
+                Tasks.startDefenseThree = true;
+            }
+        }
+        else if (CESEnabled && !getOneStick)
         {
-            Tasks.startDefenseOne = true;
-            TownLogic.roundCount = 1;
+            Vector3 spawnin = transform.position + new Vector3(-4, 0, 0);
+            Instantiate(CES, spawnin, transform.rotation);
+            getOneStick = true;
         }
 
-        if (collider.CompareTag("Player") && buildTown && DefenseOneReady && DefenseTwoReady && !DefenseThreeReady)
-        {
-            Tasks.startDefenseTwo = true;
-            TownLogic.roundCount = 2;
-        }
-
-        if (collider.CompareTag("Player") && buildTown && DefenseOneReady && DefenseTwoReady && DefenseThreeReady)
-        {
-            Tasks.startDefenseThree = true;
-        }
     }
 
     void OnTriggerExit(Collider collider)
@@ -146,8 +161,6 @@ public class Builder : MonoBehaviour
     #endregion
 
     #endregion
-
-
 }
 
 #region Script Log

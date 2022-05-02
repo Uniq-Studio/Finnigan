@@ -20,10 +20,15 @@ public class Forgers : BuildingBase
     public static bool r1;
     public static bool r2;
     public static bool r3;
+    public static bool CESEnabled;
     #endregion
 
     #region Unity Triggers
 
+    void Start()
+    {
+        UI = FindObjectOfType<UIUpdater>();
+    }
     void OnTriggerEnter(Collider collider)
     {
         #region Comment
@@ -47,46 +52,52 @@ public class Forgers : BuildingBase
         #endregion
         if (collider.CompareTag("Player") && !doOnce)
         {
-            switch (TownLogic.roundCount)
+            if (!Tasks.LearnAboutCES)
             {
-                case 0:
-                    if (r1)
-                    {
-                        RequirementsCheck(10, 20, 20, 7, 2, IncreaseForger, "Defense");
-                        break;
-                    }
-                    else
-                    {
-                        UI.UpdateSubTask("You need to go to the Miners first.");
-                        StartCoroutine(Unlock());
-                        break;
-                    }
-                case 1:
-                    if (r2)
-                    {
-                        RequirementsCheck(30, 40, 30, 10, 2, IncreaseForger, "Defense");
-                        break;
-                    }
-                    else
-                    {
-                        UI.UpdateSubTask("You need to go to the Miners first.");
-                        StartCoroutine(Unlock());
-                        break;
-                    }
-                case 2:
-                    if (r3)
-                    {
-                        RequirementsCheck(35, 50, 35, 5, 2, IncreaseForger, "Defense");
-                        break;
-                    }
-                    else
-                    {
-                        UI.UpdateSubTask("You need to go to the Miners first.");
-                        StartCoroutine(Unlock());
-                        break;
-                    }
+                switch (TownLogic.roundCount)
+                {
+                    case 0:
+                        if (r1)
+                        {
+                            RequirementsCheck(10, 20, 20, 7, 2, IncreaseNext, "Defense");
+                            break;
+                        }
+                        else
+                        {
+                            UI.UpdateSubTask("You need to go to the Miners first.");
+                            StartCoroutine(Unlock());
+                            break;
+                        }
+                    case 1:
+                        if (r2)
+                        {
+                            RequirementsCheck(30, 40, 30, 10, 2, IncreaseNext, "Defense");
+                            break;
+                        }
+                        else
+                        {
+                            UI.UpdateSubTask("You need to go to the Miners first.");
+                            StartCoroutine(Unlock());
+                            break;
+                        }
+                    case 2:
+                        if (r3)
+                        {
+                            RequirementsCheck(35, 50, 35, 5, 2, IncreaseNext, "Defense");
+                            break;
+                        }
+                        else
+                        {
+                            UI.UpdateSubTask("You need to go to the Miners first.");
+                            StartCoroutine(Unlock());
+                            break;
+                        }
+                }
             }
-
+            else if (CESEnabled)
+            {
+                RequirementsCheck(40,40,30,20,2,IncreaseNext,"Defense");
+            }
             doOnce = true;
         }
     }
@@ -103,20 +114,28 @@ public class Forgers : BuildingBase
      */
     #endregion
 
-    void IncreaseForger()
+    void IncreaseNext()
     {
-        switch (TownLogic.roundCount)
+        if (!Tasks.LearnAboutCES)
         {
-            case 0:
-                Defense_Maker.r1 = true;
-                break;
-            case 1:
-                Defense_Maker.r2 = true;
-                break;
-            case 2:
-                Defense_Maker.r3 = true;
-                break;
+            switch (TownLogic.roundCount)
+            {
+                case 0:
+                    Defense_Maker.r1 = true;
+                    break;
+                case 1:
+                    Defense_Maker.r2 = true;
+                    break;
+                case 2:
+                    Defense_Maker.r3 = true;
+                    break;
+            }
         }
+        else if (CESEnabled)
+        {
+            Defense_Maker.CESEnabled = true;
+        }
+        
         doOnce = false;
     }
     #endregion
