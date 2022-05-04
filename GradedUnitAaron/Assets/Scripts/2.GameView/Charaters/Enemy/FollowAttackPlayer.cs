@@ -23,6 +23,7 @@ public class FollowAttackPlayer : MonoBehaviour
                 if (!doOnce)
                 {
                     StartCoroutine(TakePlayerHealth());
+                    doOnce = true;
                 }
             }
         }
@@ -31,7 +32,6 @@ public class FollowAttackPlayer : MonoBehaviour
 
     IEnumerator TakePlayerHealth()
     {
-        doOnce = true;
         yield return new WaitForSeconds(1);
         PlayerBase.m_CharacterBase.health--;
         yield return new WaitForSeconds(2);

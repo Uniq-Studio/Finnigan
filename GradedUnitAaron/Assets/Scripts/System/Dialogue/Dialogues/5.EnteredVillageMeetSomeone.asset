@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1daf1187757c1640a5f6f3d141663c0, type: 3}
+  m_Name: 5.EnteredVillageMeetSomeone
+  m_EditorClassIdentifier: 
+  dialogue:
+  - "Hey you\u2019re new!"
+  - "Wait seriously? They are at it agai\u2026"
+  - Hold up, you said raid, right?
+  - Oh no, this changes everything.
+  - . . .
+  - Okay, so we wanted to make a town, to help us build up stuff to sell and improve
+    our town!
+  - Guess we need to start construction now.
+  - Can you help us?
+  - All you need to do is bring items to the VERY left of us, where all the rock
+    are.
+  - 'If you can, can you get us:'
+  - 20 Berries, 5 Stones, 6 leaves, 10 sticks.

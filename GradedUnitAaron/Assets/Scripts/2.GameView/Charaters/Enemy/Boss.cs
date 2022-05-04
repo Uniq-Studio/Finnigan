@@ -9,6 +9,9 @@ public class Boss : MonoBehaviour
     private CharacterBase m_CharacterBase = new CharacterBase();
     private TriggerSystem m_TriggerSystem = new TriggerSystem();
 
+    [SerializeField] private SO_DialogueData dialogueOne;
+    [SerializeField] private SO_DialogueData dialogueTwo;
+
     // Start is called before the first frame update
     void Start()
     {

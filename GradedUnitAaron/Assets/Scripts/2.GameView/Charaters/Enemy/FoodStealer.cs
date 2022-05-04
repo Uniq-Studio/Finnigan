@@ -71,12 +71,15 @@ public class FoodStealer : MonoBehaviour
 
         if (m_CharacterBase.health <= 0)
         {
+            FollowAttackPlayer.enabled = false;
+            inCombat = false;
             Dead();
         }
 
         if (!doOnceReheal)
         {
             StartCoroutine(Reheal());
+            doOnceReheal = true;
         }
 
     }
@@ -104,8 +107,8 @@ public class FoodStealer : MonoBehaviour
 
     IEnumerator Reheal()
     {
-        if (!doOnceReheal){
-            if (m_CharacterBase.health < m_CharacterBase.healthMax)
+        yield return new WaitForSeconds(3);
+        if (m_CharacterBase.health < m_CharacterBase.healthMax)
             {
                 m_CharacterBase.health++;
             }
@@ -114,11 +117,7 @@ public class FoodStealer : MonoBehaviour
             {
                 m_CharacterBase.health = m_CharacterBase.healthMax;
             }
-
-            doOnceReheal = true;
-            }
-        yield return new WaitForSeconds(3);
-        doOnceReheal = false;
+            doOnceReheal = false;
         
     }
 }

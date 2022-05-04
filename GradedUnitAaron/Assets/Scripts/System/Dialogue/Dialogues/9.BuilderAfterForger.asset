@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1daf1187757c1640a5f6f3d141663c0, type: 3}
+  m_Name: 9.BuilderAfterForger
+  m_EditorClassIdentifier: 
+  dialogue:
+  - Sie verwenden Google Translate falsch. Willst du es noch einmal versuchen? Furry
+    friend!
+  - Little bit of Chinese.
+  - We now have Forger.
+  - Now we need a Defence builder. The last one!
+  - "So, here\u2019s the list:"
+  - 30 Berries, 40 Stones, 40 leaves, 40 Sticks.
