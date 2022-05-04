@@ -365,6 +365,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/HDPR/TutorialInfo/Scripts/Readme.cs"
 "Assets/Scripts/1.MenuView/Main Menu/MainMenu.cs"
+"Assets/Scripts/1.MenuView/Main Menu/Settings.cs"
 "Assets/Scripts/1.MenuView/Pause Menu/PauseMenu.cs"
 "Assets/Scripts/2.GameView/Blockers/EnemyBlock.cs"
 "Assets/Scripts/2.GameView/Blockers/WallBlock.cs"

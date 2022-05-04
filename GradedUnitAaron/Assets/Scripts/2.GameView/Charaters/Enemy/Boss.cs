@@ -21,6 +21,7 @@ public class Boss : MonoBehaviour
     void OnTriggerEnter(Collider collider)
     {
         m_TriggerSystem.Interact(EndGame, collider);
+        m_TriggerSystem.Interact(RequestForStick, collider);
     }
 
     //Ends Game when has Item
@@ -35,5 +36,8 @@ public class Boss : MonoBehaviour
         }
     }
 
-
+    void RequestForStick()
+    {
+        Tasks.LearnAboutCES = true;
+    }
 }
