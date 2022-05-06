@@ -21,7 +21,7 @@ public class BuilderCharacter : MonoBehaviour
     [SerializeField] private DialogueSystem m_Dialogue;
     private TriggerSystem m_TriggerSystem = new TriggerSystem();
 
-    private int dialogueCount = 1;
+    public static int dialogueCount = 1;
 
     #endregion
 

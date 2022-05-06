@@ -14,6 +14,9 @@ public class FoodStealer : MonoBehaviour
     private bool doOnceReheal;
     private bool doOnceDamage;
 
+    [SerializeField] private SO_DialogueData dialogueOne;
+    [SerializeField] private DialogueSystem m_Dialogue;
+
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("PlayerAttack") && !doOnceDamage)
@@ -42,15 +45,13 @@ public class FoodStealer : MonoBehaviour
 
         if (FoodBox.attackAttempts >= 3)
         {
-            Debug.Log("DIALOG FOR VILLAGE");
-            UI.UpdateTask("Lets explore and find the village");
-            Tasks.allFoodStealersGone = true;
-            Destroy(self);
+            StartCoroutine(DialogueDieLogic());
         }
     }
 
     private void Start()
     {
+        m_Dialogue = FindObjectOfType<DialogueSystem>();
         UI = FindObjectOfType<UIUpdater>();
         m_CharacterBase.health = 5;
         m_CharacterBase.healthMax = 5;
@@ -59,7 +60,7 @@ public class FoodStealer : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        Debug.Log(m_CharacterBase.health);
+        //Debug.Log(m_CharacterBase.health);
         if (!inCombat)
         {
             StartCoroutine(StealingLoop());
@@ -69,7 +70,7 @@ public class FoodStealer : MonoBehaviour
             FollowAttackPlayer.enabled = true;
         }
 
-        if (m_CharacterBase.health <= 0)
+        if (m_CharacterBase.health <= 0 && FoodBox.attackAttempts <= 3)
         {
             FollowAttackPlayer.enabled = false;
             inCombat = false;
@@ -84,6 +85,14 @@ public class FoodStealer : MonoBehaviour
 
     }
 
+    IEnumerator DialogueDieLogic()
+    {
+        m_Dialogue.StartDialogue(dialogueOne.dialogue);
+        yield return new WaitForSeconds(10);
+        UI.UpdateTask("Lets explore and find the village");
+        Tasks.allFoodStealersGone = true;
+        Destroy(self);
+    }
     IEnumerator StealingLoop()
     {
         if (!doOnce)

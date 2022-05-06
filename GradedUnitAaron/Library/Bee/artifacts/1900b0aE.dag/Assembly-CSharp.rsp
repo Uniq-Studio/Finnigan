@@ -380,6 +380,7 @@
 "Assets/Scripts/2.GameView/Charaters/Player/PlayerBase.cs"
 "Assets/Scripts/2.GameView/Charaters/Snail/Snail.cs"
 "Assets/Scripts/2.GameView/Charaters/Trader.cs"
+"Assets/Scripts/2.GameView/Charaters/VillageFolk.cs"
 "Assets/Scripts/2.GameView/Reputation/Players Reputation/Reputation.cs"
 "Assets/Scripts/2.GameView/Terrain/ChunkLoader.cs"
 "Assets/Scripts/2.GameView/Terrain/ObjectHider.cs"

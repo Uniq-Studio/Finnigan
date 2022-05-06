@@ -11,19 +11,38 @@ public class PlayerBase : MonoBehaviour
     public GameObject hitBox;
     private bool doOnce;
     public Text healthText;
+
     [SerializeField] private SO_DialogueData dialogueOne;
     [SerializeField] private SO_DialogueData dialogueTwo;
+    private bool doneDialogue2;
     [SerializeField] private SO_DialogueData dialogueThree;
+    private bool doneDialogue3;
+
+    [SerializeField] private DialogueSystem m_Dialogue;
 
     void Start()
     {
         m_CharacterBase.health = 100;
         m_CharacterBase.healthMax = 100;
+
+        m_Dialogue.StartDialogue(dialogueOne.dialogue);
     }
     
 
     void Update()
     {
+        if (Tasks.checkedFood && !doneDialogue2)
+        {
+            m_Dialogue.StartDialogue(dialogueTwo.dialogue); 
+            doneDialogue2 = true;
+        }
+
+        if (Tasks.allFoodStealersGone && !doneDialogue3)
+        {
+            m_Dialogue.StartDialogue(dialogueThree.dialogue);
+            doneDialogue3 = true;
+        }
+
         healthText.text = "Health: " + m_CharacterBase.health;
         if (!doOnce)
         {

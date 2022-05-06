@@ -45,25 +45,25 @@ public class ItemDatabase : MonoBehaviour
         "Berries",
         "Freshly plucked berries, great to feed the cubs or to trade.",
         new Dictionary<string, int>
-        {{ "Amount", 1 }}),
+        {{ "Amount", Inventory.berryAmount }}),
 
         new Item(1,
         "Pretty Stone",
         "Solid for a great foundation.",
         new Dictionary<string, int>
-        {{ "Amount", 1 }}),
+        {{ "Amount", Inventory.stoneAmount }}),
 
         new Item(2,
         "Stick",
         "A simple stick with great possibilities.",
         new Dictionary<string, int>
-        {{ "Amount", 1 }}),
+        {{ "Amount", Inventory.stickAmount }}),
 
         new Item(3,
         "Leaf",
         "Perfect for filling in the gaps and waterproof!",
         new Dictionary<string, int>
-        {{ "Amount", 1 }})};
+        {{ "Amount", Inventory.stickAmount }})};
     }
     #endregion
 

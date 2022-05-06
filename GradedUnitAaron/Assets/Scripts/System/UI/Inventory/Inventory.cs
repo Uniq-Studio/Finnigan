@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -7,20 +8,22 @@ public class Inventory : MonoBehaviour
     public ItemDatabase itemDatabase;
     public UIInventory inventoryUI;
 
-    public static int berryAmount = 1000;
+    public static int berryAmount;
     public static bool berriesShowing;
-    public static int stoneAmount = 1000;
+    public static int stoneAmount;
     public static bool stoneShowing;
-    public static int stickAmount = 1000;
+    public static int stickAmount;
     public static bool stickShowing;
-    public static int leafAmount = 1000;
+    public static int leafAmount;
     public static bool leafShowing;
+
+    public TextMeshProUGUI textMesh;
 
     
 
     void Update()
     {
-        //Debug.Log("Berries: "  + berryAmount + " Stone: " + stoneAmount + " Stick: " + stickAmount + " leaf: " + leafAmount);
+        textMesh.text = "Berries: " + berryAmount + " Stone: " + stoneAmount + " Stick: " + stickAmount + " leaf: " + leafAmount;
         if (berryAmount <= 0)
         {
             RemoveItem(0);

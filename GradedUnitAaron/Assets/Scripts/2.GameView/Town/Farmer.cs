@@ -29,6 +29,7 @@ public class Farmer : BuildingBase
          */
         #endregion
         UI = FindObjectOfType<UIUpdater>();
+        BuilderCharacter.dialogueCount = 2;
     }
 
     void Update()
