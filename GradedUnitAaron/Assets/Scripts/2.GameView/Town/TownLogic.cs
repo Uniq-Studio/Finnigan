@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NGS.ExtendableSaveSystem;
 using UnityEngine;
 
 public class TownLogic : MonoBehaviour
@@ -24,24 +25,10 @@ public class TownLogic : MonoBehaviour
     private int count;
     private bool doOnce;
     private bool doOnceCount;
+    private GameMaster m_GM;
     #endregion
 
     #region Unity Triggers
-    void Start()
-    {
-        #region Comment
-        /*
-            We are going to make sure that
-            everything is hidden on start.
-         */
-        #endregion
-
-        Builder.SetActive(false);
-        Farmer.SetActive(false);
-        Miners.SetActive(false);
-        Forgers.SetActive(false);
-        Defense.SetActive(false);
-    }
 
     void OnTriggerEnter(Collider collider)
     {
@@ -104,8 +91,11 @@ public class TownLogic : MonoBehaviour
 
     IEnumerator Timer(int length, GameObject item)
     {
+        m_GM = FindObjectOfType<GameMaster>();
         yield return new WaitForSeconds(length);
-        item.gameObject.SetActive(true);
+        item.transform.localPosition += new Vector3(0, +10, 0);
+        new WaitForSeconds(1);
+        m_GM.SaveGame();
     }
     #endregion
 
@@ -124,7 +114,8 @@ public class TownLogic : MonoBehaviour
 #endregion
 
 #region Edit Logs
-//Date: Thurs, 28 Apr 2022 | Time: 10:30 | Edit by: Aaron Hamilton
+//Date: Thurs, 28 Apr 2022  | Time: 10:30 | Edit by: Aaron Hamilton
+//Date: Mon, 09 May 2022    | Time: 15:25 | Edit by: Aaron Hamilton
 #endregion
 
 #region Sources

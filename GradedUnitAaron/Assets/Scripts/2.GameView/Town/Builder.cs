@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NGS.ExtendableSaveSystem;
 using UnityEngine;
 
 public class Builder : MonoBehaviour
@@ -23,6 +24,7 @@ public class Builder : MonoBehaviour
     private bool doOnce;
     private bool buildTown;
     private bool getOneStick;
+    private GameMaster m_GM;
 
     public static bool DefenseOneReady;
     public static bool DefenseTwoReady;
@@ -154,9 +156,12 @@ public class Builder : MonoBehaviour
     IEnumerator Timer(int length, GameObject item)
     {
         count++;
+        m_GM = FindObjectOfType<GameMaster>();
         yield return new WaitForSeconds(length);
-        item.gameObject.SetActive(true);
-        
+        item.transform.localPosition += new Vector3(0, +10, 0);
+        new WaitForSeconds(1);
+        m_GM.SaveGame();
+
     }
     #endregion
 
@@ -177,6 +182,7 @@ public class Builder : MonoBehaviour
 #region Edit Logs
 //Date: Thurs, 28 Apr 2022  | Time: 10:30 | Edit by: Aaron Hamilton
 //Date: Sat, 30 Apr 2022    | Time: 14:00 | Edit By: Aaron Hamilton
+//Date: Mon, 09 May 2022    | Time: 15:50 | Edit By: Aaron Hamilton
 #endregion
 
 #region Sources
