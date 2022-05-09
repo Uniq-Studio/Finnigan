@@ -1,4 +1,5 @@
 using System.Collections;
+using NGS.ExtendableSaveSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 public class PlayerBase : MonoBehaviour
 {
     public static CharacterBase m_CharacterBase = new CharacterBase();
+    private GameMaster m_GM;
 
     public static Transform m_Transform;
     public GameObject hitBox;
@@ -22,10 +24,17 @@ public class PlayerBase : MonoBehaviour
 
     void Start()
     {
-        m_CharacterBase.health = 100;
-        m_CharacterBase.healthMax = 100;
-
-        m_Dialogue.StartDialogue(dialogueOne.dialogue);
+        if (GameMaster.triggerLoad)
+        {
+            m_GM = FindObjectOfType<GameMaster>();
+            m_GM.LoadGame();
+        }
+        else
+        {
+            m_Dialogue.StartDialogue(dialogueOne.dialogue);
+        }
+        m_CharacterBase.health = 10;
+        m_CharacterBase.healthMax = 10;
     }
     
 

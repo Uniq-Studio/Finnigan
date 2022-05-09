@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using NGS.ExtendableSaveSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -45,6 +46,8 @@ public class MainMenu : MonoBehaviour
     public static bool loadSave;
     public static bool gameOver;
 
+    [SerializeField] private GameMaster m_GM;
+
     #endregion
 
     #region Code
@@ -61,7 +64,8 @@ public class MainMenu : MonoBehaviour
                 //Check If the Programmer is debugging
                 if (debugMode != true)
                 {
-                   FileCheck();
+                    m_GM = FindObjectOfType<GameMaster>();
+                    m_GM.CheckSave();
                 }
                 else
                 {

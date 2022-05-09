@@ -13,7 +13,7 @@ public class LoadSaveOnLaunch : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Load save isnt true");
+            Debug.LogError("Load save failed, Did you load from the menu? playing stright in game view will cause this error");
         }
     }
 
