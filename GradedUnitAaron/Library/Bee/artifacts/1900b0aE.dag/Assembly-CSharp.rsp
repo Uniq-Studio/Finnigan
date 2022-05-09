@@ -426,6 +426,13 @@
 "Assets/Scripts/System/UI/Inventory/UI/UIInventory.cs"
 "Assets/Scripts/System/UI/Inventory/UI/UIItem.cs"
 "Assets/Scripts/System/UI/UIUpdater.cs"
+"Assets/Scripts/Tutorial/Logic/items/TutBush.cs"
+"Assets/Scripts/Tutorial/Logic/items/TutLeaf.cs"
+"Assets/Scripts/Tutorial/Logic/items/TutStick.cs"
+"Assets/Scripts/Tutorial/Logic/items/TutStone.cs"
+"Assets/Scripts/Tutorial/Logic/PlayerButtonClickTaskCompleter.cs"
+"Assets/Scripts/Tutorial/Logic/TutBoar.cs"
+"Assets/Scripts/Tutorial/Tasks/TutTasks.cs"
 -langversion:9.0
 
 /deterministic

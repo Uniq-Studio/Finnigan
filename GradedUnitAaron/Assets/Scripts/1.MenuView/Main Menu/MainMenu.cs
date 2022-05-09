@@ -178,6 +178,11 @@ public class MainMenu : MonoBehaviour
         loadSave = true;
         SceneManager.LoadScene(game);
     }
+
+    public void Tutorial()
+    {
+        SceneManager.LoadScene(2);
+    }
     #endregion
 
     #region Settings
