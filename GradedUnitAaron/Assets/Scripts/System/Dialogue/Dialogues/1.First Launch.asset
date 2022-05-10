@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: 1.First Launch
   m_EditorClassIdentifier: 
   dialogue:
-  - Hmm, it is another day.
+  - Hmm, it is another day. (Press Enter to continue))
   - I should really check the food box to see how much food is left.

@@ -28,7 +28,8 @@ public class Spawner : MonoBehaviour
     private UIUpdater UI;
 
     private int num;
-    private int max;
+    private int max = 60;
+
 
     private bool doOnce = false;
     private bool round1;
@@ -63,12 +64,12 @@ public class Spawner : MonoBehaviour
 
         if (Tasks.startDefenseOne && !round1)
         {
-            max = 10;
-            if (!doOnce && max > 0)
+            
+            if (!doOnce && max > 50)
             {
                 StartCoroutine(SpawnIn());
             }
-            if (max <= 0)
+            if (max <= 50)
             {
                 round1 = true;
             }
@@ -76,20 +77,18 @@ public class Spawner : MonoBehaviour
 
         if (Tasks.startDefenseTwo && !round2)
         {
-            max = 20;
-            if (!doOnce && max > 0)
+            if (!doOnce && max > 30)
             {
                 StartCoroutine(SpawnIn());
             }
-            if (max <= 0)
+            if (max <= 30)
             {
-                round1 = true;
+                round2 = true;
             }
         }
 
         if (Tasks.startDefenseThree && !round3)
         {
-            max = 30;
             if (!doOnce && max > 0)
             {
                 StartCoroutine(SpawnIn());
@@ -97,8 +96,13 @@ public class Spawner : MonoBehaviour
             if (max <= 0)
             {
                 round3 = true;
+                UI.UpdateTask("Once we got them all, Lets go to the Enemy Base");
+                Tasks.talkToTheEnemy = true;
             }
         }
+
+        if (max <= 0)
+            Destroy(gameObject);
     }
     #endregion
 
@@ -116,6 +120,7 @@ public class Spawner : MonoBehaviour
     #endregion
     IEnumerator SpawnIn()
     {
+        doOnce = true;
         new WaitForSeconds(4);
         num = Mathf.RoundToInt(Random.Range(1, 4));
         switch (num)
@@ -130,7 +135,6 @@ public class Spawner : MonoBehaviour
                 Instantiate(Attacker, Spawner3.transform.position, transform.rotation);
                 break;
         }
-        doOnce = true;
         max--;
         yield return new WaitForSeconds(1);
         doOnce = false;
@@ -154,6 +158,7 @@ public class Spawner : MonoBehaviour
 
 #region Edit Logs
 //Date: Mon, 09 May 2022 | Time: 19:05 | Edit by: Aaron Hamilton
+//Date: Tue, 10 May 2022 | Time: 12:15 | Edit by: Aaron Hamilton
 #endregion
 
 #region Sources

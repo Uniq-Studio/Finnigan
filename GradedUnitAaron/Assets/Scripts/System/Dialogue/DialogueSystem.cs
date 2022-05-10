@@ -25,7 +25,7 @@ public class DialogueSystem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.RightArrow))
+        if (Input.GetKeyUp(KeyCode.Return))
         {
             NextDialogue();
         }

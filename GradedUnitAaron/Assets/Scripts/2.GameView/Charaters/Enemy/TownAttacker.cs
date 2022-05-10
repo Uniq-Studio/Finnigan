@@ -21,6 +21,7 @@ public class TownAttacker : MonoBehaviour
     private int num;
     private bool combat;
     private bool doOnceReheal;
+    private bool doOnceHit;
 
     #endregion
 
@@ -45,6 +46,7 @@ public class TownAttacker : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(m_CharacterBase.health);
         #region Comment
         /*
 			When the character isn’t in combat
@@ -88,8 +90,11 @@ public class TownAttacker : MonoBehaviour
             FollowAttackPlayer.enabled = true;
         
 
-        if (!doOnceReheal)
-            StartCoroutine(Reheal());
+        //if (!doOnceReheal)
+            //StartCoroutine(Reheal());
+
+        if (m_CharacterBase.health <= 0)
+            Destroy(gameObject);
     }
 
     void OnTriggerEnter(Collider collider)
@@ -100,8 +105,20 @@ public class TownAttacker : MonoBehaviour
 			and attacks the player.
          */
         #endregion
-        if (collider.CompareTag("PlayerAttack"))
+
+        if (collider.CompareTag("PlayerAttack") && !doOnceHit)
+        {
             combat = true;
+            m_CharacterBase.health--;
+            doOnceHit = true;
+        }
+            
+    }
+
+    void OnTriggerExit(Collider collider)
+    {
+        if (collider.CompareTag("PlayerAttack"))
+            doOnceHit = false;
     }
     #endregion
 

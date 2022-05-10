@@ -28,6 +28,7 @@ public class Forgers : BuildingBase
     void Start()
     {
         UI = FindObjectOfType<UIUpdater>();
+        
     }
     void OnTriggerEnter(Collider collider)
     {

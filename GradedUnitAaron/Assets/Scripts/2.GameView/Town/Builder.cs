@@ -25,6 +25,7 @@ public class Builder : MonoBehaviour
     private bool buildTown;
     private bool getOneStick;
     private GameMaster m_GM;
+    private UIUpdater UI;
 
     public static bool DefenseOneReady;
     public static bool DefenseTwoReady;
@@ -43,6 +44,7 @@ public class Builder : MonoBehaviour
          */
         #endregion
 
+        UI = FindObjectOfType<UIUpdater>();
     }
 
     void OnTriggerEnter(Collider collider)
@@ -64,20 +66,24 @@ public class Builder : MonoBehaviour
                     case 1:
                         Debug.Log("Switch 1");
                         RequirementsCheck(30, 5, 10, 5, 2, Farmer);
-                        break;
+                        BuilderCharacter.dialogueCount = 2;
+                    break;
                     case 2:
                         Debug.Log("Switch 2");
                         RequirementsCheck(20, 20, 5, 20, 2, Miners);
-                        break;
+                        BuilderCharacter.dialogueCount = 3;
+                    break;
                     case 3:
                         Debug.Log("Switch 3");
                         RequirementsCheck(40, 30, 10, 30, 2, Forgers);
-                        break;
+                        BuilderCharacter.dialogueCount = 4;
+                    break;
                     case 4:
                         Debug.Log("Switch 4");
                         RequirementsCheck(30, 40, 40, 40, 2, Defense);
                         buildTown = true;
-                        break;
+                        UI.UpdateTask("Collect as many Items as possible and bring it to each podium to build up defense");
+                    break;
                 }
 
                 doOnce = true;
@@ -88,19 +94,19 @@ public class Builder : MonoBehaviour
         {
             if (collider.CompareTag("Player") && buildTown && DefenseOneReady && !DefenseTwoReady && !DefenseThreeReady)
             {
-                Tasks.startDefenseOne = true;
+                VillageLogic.round1 = true;
                 TownLogic.roundCount = 1;
             }
 
             if (collider.CompareTag("Player") && buildTown && DefenseOneReady && DefenseTwoReady && !DefenseThreeReady)
             {
-                Tasks.startDefenseTwo = true;
+                VillageLogic.round2 = true;
                 TownLogic.roundCount = 2;
             }
 
             if (collider.CompareTag("Player") && buildTown && DefenseOneReady && DefenseTwoReady && DefenseThreeReady)
             {
-                Tasks.startDefenseThree = true;
+                VillageLogic.round3 = true;
             }
         }
         else if (CESEnabled && !getOneStick)
@@ -183,6 +189,7 @@ public class Builder : MonoBehaviour
 //Date: Thurs, 28 Apr 2022  | Time: 10:30 | Edit by: Aaron Hamilton
 //Date: Sat, 30 Apr 2022    | Time: 14:00 | Edit By: Aaron Hamilton
 //Date: Mon, 09 May 2022    | Time: 15:50 | Edit By: Aaron Hamilton
+//Date: Tus, 10 May 2022    | Time: 13:12 | Edit By: Aaron Hamilton
 #endregion
 
 #region Sources

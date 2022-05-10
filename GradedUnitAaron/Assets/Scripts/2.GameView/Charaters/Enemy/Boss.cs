@@ -69,6 +69,7 @@ public class Boss : MonoBehaviour
         {
             m_Dialogue.StartDialogue(dialogueOne.dialogue);
             Tasks.LearnAboutCES = true;
+            BuilderCharacter.dialogueCount = 5;
         }
     }
     #endregion
@@ -89,8 +90,24 @@ public class Boss : MonoBehaviour
             m_Dialogue.StartDialogue(dialogueTwo.dialogue);
             Debug.Log("Game Over");
             MainMenu.gameOver = true;
-            //SceneManager.LoadScene(0);
+            StartCoroutine(MenuTimer());
         }
+    }
+    #endregion
+
+    #region End Game Timer
+    #region Comment
+    /*
+        When the player has the stick, it
+        will then start the game over dialogue
+        and the end the game.
+     */
+    #endregion
+
+    IEnumerator MenuTimer()
+    {
+        yield return new WaitForSeconds(10);
+        SceneManager.LoadScene(0);
     }
     #endregion
 
@@ -110,6 +127,7 @@ public class Boss : MonoBehaviour
 
 #region Edit Logs
 //Date: Mon, 09 May 2022 | Time: 16:50 | Edit by: Aaron Hamilton
+//Date: Tus, 10 May 2022 | Time: 12:45 | Edit by: Aaron Hamilton
 #endregion
 
 #region Sources

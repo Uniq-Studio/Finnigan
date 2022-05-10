@@ -28,6 +28,7 @@ public class Defense_Maker : BuildingBase
     void Start()
     {
         UI = FindObjectOfType<UIUpdater>();
+        
     }
     void OnTriggerEnter(Collider collider)
     {

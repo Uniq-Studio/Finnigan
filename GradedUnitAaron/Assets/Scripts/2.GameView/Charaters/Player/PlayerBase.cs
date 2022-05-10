@@ -22,11 +22,14 @@ public class PlayerBase : MonoBehaviour
 
     [SerializeField] private DialogueSystem m_Dialogue;
 
+
+
     void Start()
     {
+        m_GM = FindObjectOfType<GameMaster>();
         if (GameMaster.triggerLoad)
         {
-            m_GM = FindObjectOfType<GameMaster>();
+        
             m_GM.LoadGame();
         }
         else
@@ -62,7 +65,7 @@ public class PlayerBase : MonoBehaviour
 
         if (m_CharacterBase.health <= 0)
         {
-            Dead();
+            m_GM.LoadGame();
         }
 
         m_Transform = transform;

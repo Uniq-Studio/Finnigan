@@ -24,10 +24,10 @@ public class FoodBox : MonoBehaviour
         {
             m_TriggerSystem.Interact(LowFood, collider);
         }
-        else if (!getTask && Inventory.berryAmount >= 1)
+        else if (!getTask && Inventory.berryAmount >= 10)
         {
-            storage += Inventory.berryAmount;
-            Inventory.berryAmount = 0;
+            storage += 10;
+            Inventory.berryAmount -= 10;
             UI.UpdateBerries(Inventory.berryAmount);
             UI.UpdateBerriesBox(storage);
             Tasks.filledFoodBox = true;

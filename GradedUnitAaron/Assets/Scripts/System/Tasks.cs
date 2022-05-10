@@ -24,7 +24,7 @@ public class Tasks : MonoBehaviour
     public static bool startDefenseTwo;
     public static bool startDefenseThree;
     public static bool talkToTheEnemy;
-    public static bool LearnAboutCES = true;
+    public static bool LearnAboutCES;
 
     public static bool allComplete;
     #endregion
