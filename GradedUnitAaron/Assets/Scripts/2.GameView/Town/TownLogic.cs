@@ -15,10 +15,6 @@ public class TownLogic : MonoBehaviour
     #endregion
 
     public GameObject Builder;
-    public GameObject Farmer;
-    public GameObject Miners;
-    public GameObject Forgers;
-    public GameObject Defense;
 
     public static int roundCount;
 

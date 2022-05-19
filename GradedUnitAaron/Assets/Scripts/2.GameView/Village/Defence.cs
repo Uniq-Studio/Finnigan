@@ -21,20 +21,19 @@ public class Defence : MonoBehaviour
     void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Raider"))
-        {
             StartCoroutine(TakeDamage());
-        }
+        
 
         if (collider.CompareTag("Ground"))
-        {
             rb.constraints = RigidbodyConstraints.FreezeAll;
             //https://docs.unity3d.com/ScriptReference/RigidbodyConstraints.FreezeAll.html
-        }
+        
     }
 
     void OnTriggerExit(Collider collider)
     {
-        StopCoroutine(TakeDamage());
+        if (collider.CompareTag("Raider"))
+            StopCoroutine(TakeDamage());
     }
 
     private IEnumerator TakeDamage()
@@ -42,8 +41,8 @@ public class Defence : MonoBehaviour
         //When durability isn't 0, Takes durability and waits to repeat
         while (durability >= 1)
         {
-            durability--;
             yield return new WaitForSeconds(1);
+            durability--;
         }
     }
 }

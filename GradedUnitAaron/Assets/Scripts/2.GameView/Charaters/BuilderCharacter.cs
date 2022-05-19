@@ -8,7 +8,9 @@ public class BuilderCharacter : MonoBehaviour
     #region Comment
     /*
         We want to link all of the Builders 
-        Dialogue
+        Dialogue. and we get the DIALOGUE 
+		and TRIGGER system and start at 
+		the first line of dialogue.
      */
     #endregion
 
@@ -30,38 +32,21 @@ public class BuilderCharacter : MonoBehaviour
     {
         #region Comment
         /*
-            Comments that are multiline should
-            be around this length before starting
-            a new line.
+			We use the Interact to start the dialogue.
          */
         #endregion
-
-        if (collider.CompareTag("Player"))
-        {
-            m_TriggerSystem.Interact(StartDialogue, collider);
-        }
-    }
-
-    void Update()
-    {
-        #region Comment
-        /*
-            Comments that are multiline should
-            be around this length before starting
-            a new line.
-         */
-        #endregion
+        m_TriggerSystem.Interact(StartDialogue, collider);
     }
     #endregion
 
     #region Methods
 
-    #region Method 1
+    #region Dialogues
     #region Comment
     /*
-        Comments that are multiline should
-        be around this length before starting
-        a new line.
+		Depending on what DIALOGUECOUNT we
+		are one will run its corresponding 
+		dialogue.
      */
     #endregion
 
@@ -96,20 +81,20 @@ public class BuilderCharacter : MonoBehaviour
 #region Creation
 /*
  * This file was created on
- * DATE:    Wed, 4 May
+ * DATE:    Wed, 4 May 2022
  * TIME:    21:15
  * BY:      Aaron Hamilton
  */
 #endregion
 
 #region Edit Logs
-//Date: Mon, XX Jan 2000 | Time: 00:00 | Edit by: Uniq
+//Date: Wed, 18 May 2022 | Time: 13:56 | Edit by: Aaron Hamilton
 #endregion
 
 #region Sources
-/* Title:
- * By:
- * URL: 
+/* Title:	NONE
+ * By:		NONE
+ * URL: 	NONE
  */
 #endregion
 #endregion

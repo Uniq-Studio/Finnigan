@@ -38,9 +38,7 @@ public class Builder : MonoBehaviour
     {
         #region Comment
         /*
-            Comments that are multiline should
-            be around this length before starting
-            a new line.
+            Linking UI object to UI.
          */
         #endregion
 
@@ -49,47 +47,49 @@ public class Builder : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        
-            #region Build Town
-            #region Comment
-            /*
-                Comments that are multiline should
-                be around this length before starting
-                a new line.
-             */
-            #endregion
-            if (collider.CompareTag("Player") && !doOnce && !buildTown)
-            {
-                Debug.Log("Hey!");
-                switch (count)
-                {
-                    case 1:
-                        Debug.Log("Switch 1");
-                        RequirementsCheck(30, 5, 10, 5, 2, Farmer);
-                        BuilderCharacter.dialogueCount = 2;
+        #region Comment
+        /*
+            When ‘!buildingtown’ you have to get
+            items to build up a town, once done
+            the player has to build up defence,
+            which will be done 3 times. Once the
+            player knows about the stick and got
+            all the parts then the player can get
+            the CES.
+        */
+        #endregion
+        #region Build Town
+        if (collider.CompareTag("Player") && !doOnce && !buildTown)
+        {
+            switch (count)
+            { 
+                case 1:
+                    Debug.Log("Switch 1");
+                    RequirementsCheck(30, 5, 10, 5, 2, Farmer);
+                    BuilderCharacter.dialogueCount = 2;
                     break;
-                    case 2:
-                        Debug.Log("Switch 2");
-                        RequirementsCheck(20, 20, 5, 20, 2, Miners);
-                        BuilderCharacter.dialogueCount = 3;
+                case 2:
+                    Debug.Log("Switch 2");
+                    RequirementsCheck(20, 20, 5, 20, 2, Miners);
+                    BuilderCharacter.dialogueCount = 3;
                     break;
-                    case 3:
-                        Debug.Log("Switch 3");
-                        RequirementsCheck(40, 30, 10, 30, 2, Forgers);
-                        BuilderCharacter.dialogueCount = 4;
+                case 3:
+                    Debug.Log("Switch 3");
+                    RequirementsCheck(40, 30, 10, 30, 2, Forgers);
+                    BuilderCharacter.dialogueCount = 4;
                     break;
-                    case 4:
-                        Debug.Log("Switch 4");
-                        RequirementsCheck(30, 40, 40, 40, 2, Defense);
-                        buildTown = true;
-                        UI.UpdateTask("Collect as many Items as possible and bring it to each podium to build up defense");
+                case 4:
+                    Debug.Log("Switch 4");
+                    RequirementsCheck(30, 40, 40, 40, 2, Defense);
+                    buildTown = true;
+                    UI.UpdateTask("Collect as many Items as possible and bring it to each podium to build up defense");
                     break;
-                }
-
-                doOnce = true;
             }
-            #endregion
+            doOnce = true;
+        }
+        #endregion
 
+        #region Build Defence
         if (!Tasks.LearnAboutCES) 
         {
             if (collider.CompareTag("Player") && buildTown && DefenseOneReady && !DefenseTwoReady && !DefenseThreeReady)
@@ -109,27 +109,43 @@ public class Builder : MonoBehaviour
                 VillageLogic.round3 = true;
             }
         }
-        else if (CESEnabled && !getOneStick)
+        #endregion
+
+        #region get CES
+        if (CESEnabled && !getOneStick)
         {
             Vector3 spawnin = transform.position + new Vector3(-4, 0, 0);
             Instantiate(CES, spawnin, transform.rotation);
             getOneStick = true;
         }
-
+        #endregion
     }
 
     void OnTriggerExit(Collider collider)
     {
-        if (collider.CompareTag("Player"))
-        {
+        #region Comment
+        /*
+            To stop it running the player has to
+            leave before running the code again.
+         */
+        #endregion
+        if (collider.CompareTag("Player")) 
             doOnce = false;
-        }
     }
     #endregion
 
     #region Methods
 
     #region Requirement Check
+    #region Comment
+    /*
+        It checks the inventory to see if
+        they have all the items and if so,
+        it will take the items and then
+        build up the building it needs to
+        create after some time.
+     */
+    #endregion
     void RequirementsCheck(int Berries, int Stones, int Leafs, int Sticks, int time, GameObject item)
     {
         Debug.Log("Requirements Called");
@@ -145,7 +161,6 @@ public class Builder : MonoBehaviour
             Inventory.stickAmount -= Sticks;
 
             StartCoroutine(Timer(time, item));
-            
         }
     }
     #endregion
@@ -153,9 +168,11 @@ public class Builder : MonoBehaviour
     #region Timer
     #region Comment
     /*
-        Comments that are multiline should
-        be around this length before starting
-        a new line.
+        It will increase the count to work on
+        the next building then after a length
+        of time given it will move the
+        building up and then saves the games
+        progress.
      */
     #endregion
 
@@ -167,7 +184,6 @@ public class Builder : MonoBehaviour
         item.transform.localPosition += new Vector3(0, +10, 0);
         new WaitForSeconds(1);
         m_GM.SaveGame();
-
     }
     #endregion
 
@@ -190,6 +206,7 @@ public class Builder : MonoBehaviour
 //Date: Sat, 30 Apr 2022    | Time: 14:00 | Edit By: Aaron Hamilton
 //Date: Mon, 09 May 2022    | Time: 15:50 | Edit By: Aaron Hamilton
 //Date: Tus, 10 May 2022    | Time: 13:12 | Edit By: Aaron Hamilton
+//Date: Wed, 18 May 2022    | Time: 13:12 | Edit By: Aaron Hamilton
 #endregion
 
 #region Sources

@@ -7,13 +7,9 @@ public class Farmer : BuildingBase
     #region Variables
     #region Comment
     /*
-        Comments that are multiline should
-        be around this length before starting
-        a new line.
+        Run code once.
      */
     #endregion
-
-    private bool run;
     private bool doOnce;
 
     #endregion
@@ -23,27 +19,23 @@ public class Farmer : BuildingBase
     {
         #region Comment
         /*
-            Comments that are multiline should
-            be around this length before starting
-            a new line.
+            Link UI Script to update the UI.
          */
         #endregion
         UI = FindObjectOfType<UIUpdater>();
     }
 
-    void Update()
+    void OnTriggerEnter(Collider collider)
     {
         #region Comment
         /*
-            Comments that are multiline should
-            be around this length before starting
-            a new line.
+            After seeing the Player, it will
+            check if the player has the items it
+            need to go and create the defense.
+            Unless they learnt about CES and then
+            will let you build the CES.
          */
         #endregion
-    }
-
-    void OnTriggerEnter(Collider collider)
-    {
         if (collider.CompareTag("Player") && !doOnce)
         {
             if (!Tasks.LearnAboutCES)
@@ -63,10 +55,8 @@ public class Farmer : BuildingBase
                 }
             }
             else if (Tasks.LearnAboutCES)
-            {
-                Debug.Log("IM HERE!");
                 RequirementsCheck( 25,30,15,40,2,IncreaseNext, "Miners");
-            }
+            
             doOnce = true;
         }
     }
@@ -77,9 +67,10 @@ public class Farmer : BuildingBase
     #region Miners Increase 
     #region Comment
     /*
-        Comments that are multiline should
-        be around this length before starting
-        a new line.
+        This update the next scripts
+        variables unless it’s about the CES
+        then it tells the next one that CES
+        is enabled.
      */
     #endregion
 
@@ -99,11 +90,10 @@ public class Farmer : BuildingBase
                     Miners.r3 = true;
                     break;
             }
-        }else if (Tasks.LearnAboutCES)
-        {
-            Miners.CESEnabled = true;
         }
-        
+        else if (Tasks.LearnAboutCES)
+            Miners.CESEnabled = true;
+
         doOnce = false;
     }
 
@@ -124,7 +114,8 @@ public class Farmer : BuildingBase
 #endregion
 
 #region Edit Logs
-//Date: Thurs, 28 Apr 2022 | Time: 10:30 | Edit by: Aaron Hamilton
+//Date: Thurs, 28 Apr 2022  | Time: 10:30 | Edit by: Aaron Hamilton
+//Date: Wed, 18 May 2022    | Time: 16:00 | Edit by: Aaron Hamilton
 #endregion
 
 #region Sources

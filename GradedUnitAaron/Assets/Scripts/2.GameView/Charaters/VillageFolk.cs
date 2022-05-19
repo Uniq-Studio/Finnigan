@@ -7,9 +7,7 @@ public class VillageFolk : MonoBehaviour
     #region Variables
     #region Comment
     /*
-        Comments that are multiline should
-        be around this length before starting
-        a new line.
+        We link the Village Folk’s dialogue.
      */
     #endregion
 
@@ -22,9 +20,8 @@ public class VillageFolk : MonoBehaviour
     {
         #region Comment
         /*
-            Comments that are multiline should
-            be around this length before starting
-            a new line.
+            If the player walks up, the dialogue
+            starts.
          */
         #endregion
 
@@ -33,32 +30,6 @@ public class VillageFolk : MonoBehaviour
             m_Dialogue.StartDialogue(dialogueOne.dialogue);
         }
     }
-
-    void Update()
-    {
-        #region Comment
-        /*
-            Comments that are multiline should
-            be around this length before starting
-            a new line.
-         */
-        #endregion
-    }
-    #endregion
-
-    #region Methods
-
-    #region Method 1
-    #region Comment
-    /*
-        Comments that are multiline should
-        be around this length before starting
-        a new line.
-     */
-    #endregion
-
-    #endregion
-
     #endregion
 }
 
@@ -67,20 +38,20 @@ public class VillageFolk : MonoBehaviour
 #region Creation
 /*
  * This file was created on
- * DATE:
- * TIME:
- * BY:
+ * DATE:    UNKNOWN
+ * TIME:    UNKNOWN
+ * BY:      Aaron Hamilton
  */
 #endregion
 
 #region Edit Logs
-//Date: Mon, XX Jan 2000 | Time: 00:00 | Edit by: Uniq
+//Date: Wed, 18 May 2022 | Time: 14:00 | Edit by: Aaron Hamilton
 #endregion
 
 #region Sources
-/* Title:
- * By:
- * URL: 
+/* Title:   NONE
+ * By:      NONE
+ * URL:     NONE
  */
 #endregion
 #endregion

@@ -6,37 +6,20 @@ using UnityEngine;
 public class SO_DialogueData : ScriptableObject
 {
     #region Variables
+
     #region Comment
+
     /*
-        Comments that are multiline should
-        be around this length before starting
-        a new line.
+        We create an array to fill up with
+        strings of text.
      */
-    #endregion
 
     #endregion
 
     public string[] dialogue;
 
-    #region Methods
-
-    #region Method 1
-
-    #region Comment
-
-    /*
-        Comments that are multiline should
-        be around this length before starting
-        a new line.
-     */
-
-    #endregion
-
-    #endregion
-
     #endregion
 }
-
 #region Script Log
 
 #region Creation

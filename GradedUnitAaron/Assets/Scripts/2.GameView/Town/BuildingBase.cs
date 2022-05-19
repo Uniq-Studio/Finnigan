@@ -7,16 +7,14 @@ public class BuildingBase : MonoBehaviour
     #region Variables
     #region Comment
     /*
-        Comments that are multiline should
-        be around this length before starting
-        a new line.
+        We want to make a method a variable
+        to pass through and get a link to the
+        UI script.
      */
-
+    #endregion
     public delegate void passingMethod();
 
     public UIUpdater UI;
-    #endregion
-
     #endregion
 
     #region Methods
@@ -91,7 +89,7 @@ public class BuildingBase : MonoBehaviour
 #endregion
 
 #region Edit Logs
-//Date: Mon, XX Jan 2000 | Time: 00:00 | Edit by: Uniq
+//Date: Wed, 18 May 2022 | Time: 14:57 | Edit by: Aaron Hamilton
 #endregion
 
 #region Sources

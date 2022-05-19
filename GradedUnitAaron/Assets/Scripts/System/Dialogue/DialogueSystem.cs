@@ -1,17 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Unity.VisualScripting;
 
 public class DialogueSystem : MonoBehaviour
 {
     #region Variables
     #region Comment
     /*
-        Comments that are multiline should
-        be around this length before starting
-        a new line.
+        We link TMPro to update the Text and
+        we get the array of dialogues and int
+        to find the next index.
      */
     #endregion
 
@@ -22,14 +19,19 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private GameObject dialoguePanel;
     #endregion
 
-
+    #region Unity Triggers
     void Update()
     {
+        #region Comment
+        /*
+            If Player hits the enter key, it goes
+            to the next line.
+         */
+        #endregion
         if (Input.GetKeyUp(KeyCode.Return))
-        {
             NextDialogue();
-        }
     }
+    #endregion
 
     #region Methods
 
@@ -118,7 +120,7 @@ public class DialogueSystem : MonoBehaviour
 #endregion
 
 #region Edit Logs
-//Date: Mon, XX Jan 2000 | Time: 00:00 | Edit by: Uniq
+//Date: Wed, 18 May 2022 | Time: 15:40 | Edit by: Uniq
 #endregion
 
 #region Sources

@@ -2,19 +2,20 @@ using UnityEngine;
 
 public class Trader : MonoBehaviour
 {
+    //THIS IS TEST CODE.
     public GameObject ces;
     private TriggerSystem triggerSystem;
     private UIUpdater UI;
 
     private bool doOnce = true;
 
-    private void Start()
+    void Start()
     {
         UI = FindObjectOfType<UIUpdater>();
         triggerSystem = new TriggerSystem();
     }
 
-    private void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter(Collider collider)
     {
         if (doOnce)
         {
